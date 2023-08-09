@@ -1,0 +1,88 @@
+@use "../../utils/colors.scss" as colors;
+
+.header {
+  width: 100%;
+  max-height: 9.375rem;
+  min-height: 9.375rem;
+  background: colors.$background-light;
+  border: 0.0625rem solid colors.$primary-light;
+  display: flex;
+}
+
+.branding {
+  width: 20%;
+  min-height: 100%;
+  border-right: 0.0625rem solid colors.$primary-light;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3125rem;
+}
+
+.tag {
+  border: 0.0625rem solid colors.$secondary-light;
+  background: colors.$terciary-light;
+
+  text-align: center;
+  border-radius: 10%;
+
+  h1 {
+    font-size: 1.125rem;
+    text-transform: uppercase;
+    color: colors.$font-light;
+    font-weight: 500;
+  }
+
+  h2 {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    color: colors.$font-light;
+    font-weight: 500;
+    padding: 0.2rem;
+  }
+}
+
+nav {
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+  justify-content: space-between;
+
+  a {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: colors.$primary-light;
+  }
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 9.375rem;
+}
+
+.search {
+  padding: 2rem;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 0.0625rem solid colors.$primary-light;
+}
+
+.bar {
+  width: 75%;
+}
+
+.canon {
+  display: flex;
+  height: 100%;
+  padding: 1.2rem;
+  height: 40%;
+  gap: 0.625rem;
+  display: flex;
+  justify-content: space-around;
+}
