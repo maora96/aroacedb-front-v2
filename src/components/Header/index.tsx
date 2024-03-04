@@ -1,4 +1,3 @@
-import styles from "./styles.module.scss";
 import { useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 
@@ -6,7 +5,7 @@ export function Header() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: {},
   } = useForm();
   const navigate = useNavigate();
 

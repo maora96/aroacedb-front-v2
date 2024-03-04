@@ -29,8 +29,6 @@ export function Results() {
     setFilters({ ...filters, search: searchTerm });
   }, [query]);
 
-  const navigate = useNavigate();
-
   const { data } = useGetSearchedCharacter(filters);
 
   return (

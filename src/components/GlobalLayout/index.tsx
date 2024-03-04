@@ -4,7 +4,7 @@ import styles from "./styles.module.scss";
 import { Header } from "../Header";
 
 export function GlobalLayout({ children }: { children: ReactElement }) {
-  const { Content, Footer } = Layout;
+  const { Content } = Layout;
 
   return (
     <Layout className={styles.container}>
