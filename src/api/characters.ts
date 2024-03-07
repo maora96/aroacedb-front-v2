@@ -16,5 +16,5 @@ export const getSearchedCharacters = async ({
     `/characters?search=${search}&amount=${amount}&page=${page}`
   );
 
-  return data;
+  return data.content;
 };

@@ -6,7 +6,10 @@ import { matcher } from "../../utils/dictionary";
 import { Header } from "../../components/Header";
 
 export function Home() {
+  // const { Title, Text } = Typography;
+
   const { data, refetch } = useGetRandomCharacter();
+  console.log(data);
 
   return (
     <>
@@ -103,7 +106,64 @@ export function Home() {
                 </div>
               </div>
             </div>
-
+            {/* <Card
+              style={{ width: "50%" }}
+              actions={[
+                "books in series",
+                "author",
+                "profile",
+                //   <SettingOutlined key="setting" />,
+                //   <EditOutlined key="edit" />,
+                //   <EllipsisOutlined key="ellipsis" />,
+              ]}
+            >
+              <div className={styles.card}>
+           
+                <Image width={150} src={data?.cover} />
+                <Space direction="vertical" style={{ width: "100%" }}>
+                  <Space
+                    style={{
+                      justifyContent: "space-between",
+                      width: "100%",
+                      alignItems: "start",
+                      gap: 0,
+                    }}
+                  >
+                    <Space style={{ gap: 0 }} direction="vertical">
+                      <Title level={5} style={{ textTransform: "uppercase" }}>
+                        {data?.name}
+                      </Title>
+                      <Text> by {data?.author}</Text>
+                    </Space>
+                    <Text type="secondary">
+                      {matcher[data?.gender]}
+                      {data?.pairing && ` | ${data.pairing}`}
+                    </Text>
+                  </Space>
+                  {data?.series && (
+                    <Text type="secondary">in the {data.series} series</Text>
+                  )}
+                  <Space>
+                    {data?.genres.map((genre: string) => (
+                      <Tag color="lime" style={{ textTransform: "uppercase" }}>
+                        {matcher[genre]}
+                      </Tag>
+                    ))}
+                  </Space>
+                  <p>
+                    {data?.name} is a {data?.importance} character.
+                  </p>
+                  <Space>
+                    <Tag color="#87d068" style={{ textTransform: "uppercase" }}>
+                      {data?.sexualOrientation}
+                    </Tag>
+                    <Tag color="#87d068" style={{ textTransform: "uppercase" }}>
+                      {data?.romanticOrientation}
+                    </Tag>
+                  </Space>
+                </Space>
+              </div>
+            </Card> */}
             <Space style={{ width: "50%", justifyContent: "flex-end" }}>
               <Button
                 type="primary"

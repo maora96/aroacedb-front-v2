@@ -10,6 +10,7 @@ export function GlobalLayout({ children }: { children: ReactElement }) {
     <Layout className={styles.container}>
       <Header />
       <Content>{children}</Content>
+      {/* <Footer className={styles.footer}>Footer</Footer> */}
     </Layout>
   );
 }
