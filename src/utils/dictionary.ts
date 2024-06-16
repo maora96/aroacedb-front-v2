@@ -3,6 +3,7 @@ export const dictionary: Record<string, string> = {
   "sci-fi": "SCIENCE_FICTION",
   scifi: "SCIENCE_FICTION",
   "science ficton": "SCIENCE_FICTION",
+  "science-fiction": "SCIENCE_FICTION",
   romance: "ROMANCE",
   "historical fiction": "HISTORICAL_FICTION",
   "hist-fic": "HISTORICAL_FICTION",

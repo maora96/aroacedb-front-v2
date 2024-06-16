@@ -1,13 +1,15 @@
 import { Route, Routes } from "react-router-dom";
-import { GlobalLayout } from "../components/GlobalLayout";
-import { AdvancedFilters } from "../components/AdvancedFilters";
 import { Home } from "../pages/Home";
+import { Results } from "../pages/Results";
 
 export function MainRoutes() {
-  console.log("hello?");
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/results" element={<Results />} />
+      <Route path="/about" element={<Home />} />
+      <Route path="/team" element={<Home />} />
+      <Route path="/contact" element={<Home />} />
     </Routes>
   );
 }

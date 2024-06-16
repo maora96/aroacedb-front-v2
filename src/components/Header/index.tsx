@@ -1,5 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { PrimaryButton } from "../Atoms/PrimaryButton";
+import { SecondaryButton } from "../Atoms/SecondaryButton";
+import styles from "./styles.module.scss";
 
 export function Header() {
   const {
@@ -13,16 +16,19 @@ export function Header() {
     navigate(`/results?search=${data.search}`);
   };
 
+  const changeLocation = (placeToGo: string) => {
+    navigate(placeToGo, { replace: true });
+    window.location.reload();
+  };
+
   return (
     <header className="w-full h-40 flex border border-lightgreen">
       <div className="w-1/6 flex flex-col justify-center items-center gap-y-2">
-        <button
-          type="button"
-          className="text-darkgray bg-lightestgray shadow-sm sm:text-sm rounded-lg text-sm px-8 py-2.5 uppercase border border-lightgreen font-semibold"
-        >
-          The AroAce Database
-        </button>
-        <nav className="text-xs flex gap-x-2 uppercase text-green font-medium">
+        <SecondaryButton
+          text="The AroAce Database"
+          onClick={() => navigate("/", { replace: true })}
+        />
+        <nav className={styles.nav}>
           <a href="/about">The database</a>
           <a href="/team">The team</a>
           <a href="/contact">Contact</a>
@@ -66,46 +72,35 @@ export function Header() {
           </div>
 
           <div className="flex w-1/4 items-center gap-x-4">
-            <button
-              type="button"
-              className="text-green bg-darkgray shadow-sm sm:text-sm rounded-lg text-sm px-8 py-2.5 uppercase font-semibold"
-            >
-              Suggest a character
-            </button>
-            <button
-              type="button"
-              className="text-green bg-lightestgray shadow-sm sm:text-sm rounded-lg text-sm px-8 py-2.5 uppercase border border-lightgreen"
-            >
-              Admin
-            </button>
+            <PrimaryButton
+              text="Suggest a character"
+              onClick={() => console.log("suggesting character")}
+            />
+
+            <SecondaryButton
+              text="Admin"
+              onClick={() => console.log("suggesting character")}
+            />
           </div>
         </div>
 
         <div className="h-1/3 flex justify-evenly items-center">
-          <button
-            type="button"
-            className="text-darkgray bg-lightestgray shadow-sm sm:text-sm rounded-lg text-sm px-8 py-2.5 uppercase border border-lightgreen font-semibold"
-          >
-            All aromantic characters
-          </button>
-          <button
-            type="button"
-            className="text-darkgray bg-lightestgray shadow-sm sm:text-sm rounded-lg text-sm px-8 py-2.5 uppercase border border-lightgreen font-semibold"
-          >
-            All asexual characters
-          </button>
-          <button
-            type="button"
-            className="text-darkgray bg-lightestgray shadow-sm sm:text-sm rounded-lg text-sm px-8 py-2.5 uppercase border border-lightgreen font-semibold"
-          >
-            Canon aromantic characters
-          </button>
-          <button
-            type="button"
-            className="text-darkgray bg-lightestgray shadow-sm sm:text-sm rounded-lg text-sm px-8 py-2.5 uppercase border border-lightgreen font-semibold"
-          >
-            Canon asexual characters
-          </button>
+          <SecondaryButton
+            text="All aromantic characters"
+            onClick={() => changeLocation(`/results?all=AROMANTIC`)}
+          />
+          <SecondaryButton
+            text="All asexual characters"
+            onClick={() => changeLocation(`/results?all=ASEXUAL`)}
+          />
+          <SecondaryButton
+            text="Canon aromantic characters"
+            onClick={() => changeLocation(`/results?canon=AROMANTIC`)}
+          />
+          <SecondaryButton
+            text="Canon asexual characters"
+            onClick={() => changeLocation(`/results?canon=ASEXUAL`)}
+          />
         </div>
       </div>
     </header>

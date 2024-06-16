@@ -1,5 +1,5 @@
 import { api } from ".";
-import { IGetSearchedCharacters } from "../types";
+import { IGetAllOrCanonCharacters, IGetSearchedCharacters } from "../types";
 
 export const getRandomCharacter = async () => {
   const { data } = await api.get("/characters/random");
@@ -16,5 +16,29 @@ export const getSearchedCharacters = async ({
     `/characters?search=${search}&amount=${amount}&page=${page}`
   );
 
-  return data.content;
+  return data;
+};
+
+export const getAllCharacters = async ({
+  param,
+  amount,
+  page,
+}: IGetAllOrCanonCharacters) => {
+  const { data } = await api.get(
+    `/characters/all-characters?param=${param}&amount=${amount}&page=${page}`
+  );
+
+  return data;
+};
+
+export const getCanonCharacters = async ({
+  param,
+  amount,
+  page,
+}: IGetAllOrCanonCharacters) => {
+  const { data } = await api.get(
+    `/characters/canon?param=${param}&amount=${amount}&page=${page}`
+  );
+
+  return data;
 };
