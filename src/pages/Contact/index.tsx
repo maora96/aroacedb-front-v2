@@ -1,8 +1,7 @@
 import { Sidebar } from "../../components/Sidebar";
 import { Header } from "../../components/Header";
 import { GeneralCard } from "../../components/GeneralCard";
-import { PrimaryButton } from "../../components/Atoms/PrimaryButton";
-import { FaBluesky, FaInstagram, FaTwitter } from "react-icons/fa6";
+import { FaTwitter } from "react-icons/fa6";
 import styles from "./styles.module.scss";
 
 export function Contact() {
