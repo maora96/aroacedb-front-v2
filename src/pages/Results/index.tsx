@@ -1,16 +1,8 @@
-import {
-  useGetAllCharacters,
-  useGetCanonCharacters,
-  useGetSearchedCharacter,
-} from "../../hooks/characters";
+import { useGetSearchedCharacter } from "../../hooks/characters";
 import { dictionary } from "../../utils/dictionary";
 import { useLocation } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
-import {
-  Character,
-  IGetAllOrCanonCharacters,
-  IGetSearchedCharacters,
-} from "../../types";
+import { Character, IGetSearchedCharacters } from "../../types";
 import { CharacterCard } from "../../components/CharacterCard";
 import { GlobalLayout } from "../../components/GlobalLayout";
 

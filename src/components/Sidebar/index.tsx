@@ -24,7 +24,6 @@ import {
   sexualOrientations,
   typeOfReps,
 } from "../../utils/dictionary";
-import { SexualOrientation } from "../../types";
 import { useNavigate } from "react-router-dom";
 
 export function Sidebar() {

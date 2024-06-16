@@ -1,5 +1,5 @@
 import { GeneralCard } from "../../components/GeneralCard";
-import { FaTwitter } from "react-icons/fa6";
+import { FaEnvelope } from "react-icons/fa6";
 import { GlobalLayout } from "../../components/GlobalLayout";
 import styles from "./styles.module.scss";
 
@@ -19,10 +19,13 @@ export function Contact() {
             </p>
 
             <div className={styles.icons}>
-              <a href="https://twitter.com/AroAceDB" target="_blank">
-                <FaTwitter size={24} />
+              <a href="mailto:aroacedatabase@gmail.com">
+                <FaEnvelope size={24} />
               </a>
             </div>
+            <p className={styles.cardParagraph} style={{ margin: "0 auto" }}>
+              aroacedatabase@gmail.com
+            </p>
           </div>
         </GeneralCard>
       </>
