@@ -47,7 +47,11 @@ export function Results() {
 
   useEffect(() => {
     const searchTerm = dictionary[query!];
-    setFilters({ ...filters, search: searchTerm });
+    if (!searchTerm) {
+      setFilters({ ...filters, search: query! });
+    } else {
+      setFilters({ ...filters, search: searchTerm });
+    }
   }, [query]);
 
   useEffect(() => {

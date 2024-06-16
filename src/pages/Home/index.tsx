@@ -8,7 +8,6 @@ import { PrimaryButton } from "../../components/Atoms/PrimaryButton";
 
 export function Home() {
   const { data, refetch } = useGetRandomCharacter();
-  console.log(data);
 
   return (
     <>

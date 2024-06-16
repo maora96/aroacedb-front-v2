@@ -142,7 +142,7 @@ export const dictionary: Record<string, string> = {
   "homo-romantic": "HOMOROMANTIC",
   "homo romantic": "HOMOROMANTIC",
 };
-// export const notesType: Record<string, { text: string }> = {
+
 export const matcher: Record<string, string> = {
   MAIN: "Main",
   LEAD: "Lead",
