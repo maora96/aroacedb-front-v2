@@ -5,9 +5,9 @@ import {
   useGetCanonCharacters,
   useGetSearchedCharacter,
 } from "../../hooks/characters";
-import { dictionary, matcher } from "../../utils/dictionary";
+import { dictionary } from "../../utils/dictionary";
 import { Header } from "../../components/Header";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
 import {
   Character,
@@ -26,7 +26,6 @@ export function Results() {
   let query = useQuery().get("search");
   let canon = useQuery().get("canon");
   let all = useQuery().get("all");
-  console.log("adsa", query, canon, all);
 
   const [filters, setFilters] = useState<IGetSearchedCharacters>({
     search: undefined,
