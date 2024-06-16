@@ -4,6 +4,9 @@ import { Results } from "../pages/Results";
 import { About } from "../pages/About";
 import { Team } from "../pages/Team";
 import { Contact } from "../pages/Contact";
+import { CanonCharacters } from "../pages/CanonCharacters";
+import { AllCharacters } from "../pages/AllCharacters";
+import { AdvancedResults } from "../pages/AdvancedResults";
 
 export function MainRoutes() {
   return (
@@ -13,6 +16,9 @@ export function MainRoutes() {
       <Route path="/about" element={<About />} />
       <Route path="/team" element={<Team />} />
       <Route path="/contact" element={<Contact />} />
+      <Route path="/canon-characters/:param" element={<CanonCharacters />} />
+      <Route path="/all-characters/:param" element={<AllCharacters />} />
+      <Route path="/advanced-results" element={<AdvancedResults />} />
     </Routes>
   );
 }

@@ -237,3 +237,171 @@ export const matcher: Record<string, string> = {
   ACESPEC: "Acespec",
   UNKNOWN: "Unknown",
 };
+
+export const genres = [
+  "Choose one...",
+  "FANTASY",
+  "SCIENCE_FICTION",
+  "ROMANCE",
+  "HISTORICAL_FICTION",
+  "CONTEMPORARY",
+  "URBAN_FANTASY",
+  "POST_APOCALYPTIC",
+  "SOLARPUNK",
+  "HIGH_FANTASY",
+  "EPIC_FANTASY",
+  "DARK_FANTASY",
+  "GRIMDARK",
+  "RETELLING",
+  "MYSTERY",
+  "THRILLER",
+  "PARANORMAL",
+  "SUPERHERO",
+  "HORROR",
+  "PARANORMAL_ROMANCE",
+  "DIESELPUNK",
+  "STEAMPUNK",
+  "SCIENCE_FANTASY",
+  "DYSTOPIA",
+  "HISTORICAL_FANTASY",
+  "CONTEMPORARY_ROMANCE",
+  "ROMANTIC_COMEDY",
+  "ADVENTURE",
+  "FAIRYTALE",
+  "HUMOR",
+  "HISTORICAL_ROMANCE",
+  "LITERARY_FICTION",
+  "PORTAL_FANTASY",
+  "ACTION",
+  "DRAMA",
+  "CUIL",
+  "FANTASY_ROMANCE",
+  "DETECTIVE",
+  "CRIME",
+];
+
+export const genders = ["Choose one...", "MALE", "FEMALE", "NONBINARY"];
+
+export const sexualOrientations = [
+  "Choose one...",
+  "ASEXUAL",
+  "GRAYASEXUAL",
+  "DEMISEXUAL",
+  "BISEXUAL",
+  "GAY",
+  "PANSEXUAL",
+  "HETEROSEXUAL",
+  "QUEER",
+  "ALLOSEXUAL",
+  "ACESPEC",
+  "UNKNOWN",
+];
+
+export const romanticOrientations = [
+  "Choose one...",
+  "AROMANTIC",
+  "GRAYROMANTIC",
+  "DEMIROMANTIC",
+  "BIROMANTIC",
+  "HOMOROMANTIC",
+  "PANROMANTIC",
+  "HETEROROMANTIC",
+  "AROFLUX",
+  "ALLOROMANTIC",
+  "AROSPEC",
+  "WTFROMANTIC",
+  "QUEER",
+  "UNKNOWN",
+];
+
+export const ageGroups = [
+  "Choose one...",
+  "CHILDRENS",
+  "MIDDLE_GRADE",
+  "YOUNG_ADULT",
+  "NEW_ADULT",
+  "ADULT",
+];
+
+export const relationships = [
+  "Choose one...",
+  "FRIENDSHIP",
+  "ROMANCE",
+  "QUEERPLATONIC",
+  "FAMILY",
+  "FOUND_FAMILY",
+  "FOUND_CHILDREN",
+  "PARTNERS",
+  "COLLEAGUES",
+  "MENTORSHIP",
+  "TEAM",
+  "SIBLINGS",
+  "COMMUNITY",
+  "RIVAL",
+];
+
+export const lengths = [
+  "Choose one...",
+  "NOVEL_SHORT",
+  "NOVEL_LONG",
+  "SHORT_STORY",
+  "NOVELLA",
+  "ANTHOLOGY",
+  "WEBSERIES",
+];
+
+export const typeOfReps = [
+  "Choose one...",
+  "WORD_OF_GOD",
+  "WORD_USED",
+  "ON_PAGE",
+];
+
+export const importances = ["Choose one...", "MAIN", "LEAD", "SIDE"];
+
+export const pairings = [
+  "Choose one...",
+  "M/F",
+  "M/M",
+  "F/F",
+  "F/F/F",
+  "F/M/F",
+  "M/F/M",
+  "M/M/M",
+  "M/NB",
+  "F/NB",
+  "NB/NB",
+  "NB/NB/NB",
+  "M/F/NB",
+  "M/NB/M",
+  "F/NB/F",
+  "NB/NB/F",
+  "NB/NB/M",
+  "M/M/NB/NB",
+  "M/M/M/M",
+  "M/M/F/F",
+  "M/M/F/NB",
+  "M/M/M/NB",
+];
+
+export const normalize = (text: string) => {
+  if (text.includes("/")) return text;
+  const array = text.split("_");
+  if (array.length > 0) {
+    let finalWord = "";
+    for (const word of array) {
+      finalWord = finalWord + `${capitalize(word.toLowerCase())} `;
+    }
+
+    return finalWord;
+  }
+};
+export const capitalize = (text: string) => {
+  const firstLetter = text.charAt(0);
+
+  const firstLetterCap = firstLetter.toUpperCase();
+
+  const remainingLetters = text.slice(1);
+
+  return firstLetterCap + remainingLetters;
+};

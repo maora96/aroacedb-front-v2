@@ -10,6 +10,19 @@ export interface IGetAllOrCanonCharacters {
   page: number;
 }
 
+export interface IGetAdvancedSearchedCharacters {
+  genres?: Genres;
+  typeOfRep?: TypeOfRep;
+  importance?: Importance;
+  pairing?: Pairing;
+  relationships?: Relationship;
+  sexualOrientation?: SexualOrientation;
+  romanticOrientation?: RomanticOrientation;
+  gender?: Gender;
+  amount: number;
+  page: number;
+}
+
 export type Character = {
   approved: boolean;
   author: string;
@@ -28,6 +41,23 @@ export type Character = {
   sexualOrientation: SexualOrientation;
   typeOfRep: TypeOfRep;
   updatedAt: Date;
+};
+
+export type Story = {
+  title: string;
+  author: string;
+  series: string | null;
+  volume: number | null;
+  genres: Genres[];
+  cover: string;
+  description: string;
+  length: Length;
+  ageGroup: AgeGroup;
+  approved: boolean;
+  notesAndWarnings: string | null;
+  repNotesAndWarnings: string | null;
+  id?: string;
+  createdAt?: Date | null;
 };
 
 export enum SexualOrientation {

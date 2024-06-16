@@ -3,6 +3,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { PrimaryButton } from "../Atoms/PrimaryButton";
 import { SecondaryButton } from "../Atoms/SecondaryButton";
 import styles from "./styles.module.scss";
+import { FaSearch } from "react-icons/fa";
 
 export function Header() {
   const {
@@ -27,6 +28,8 @@ export function Header() {
         <SecondaryButton
           text="The AroAce Database"
           onClick={() => navigate("/", { replace: true })}
+          paddingY="0.625rem"
+          paddingX="2rem"
         />
         <nav className={styles.nav}>
           <a href="/about">The database</a>
@@ -41,7 +44,7 @@ export function Header() {
               <input
                 type="text"
                 id="Search"
-                placeholder="Search for..."
+                placeholder="Search for characters..."
                 className="w-full rounded-lg border-green border border-solid py-2.5 pe-10 shadow-sm sm:text-sm outline-lightgreen p-2"
                 {...register("search")}
               />
@@ -52,20 +55,9 @@ export function Header() {
                 >
                   <span className="sr-only">Search</span>
 
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="#3F3F44"
-                    className="h-4 w-4"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-                    />
-                  </svg>
+                  <button type="submit">
+                    <FaSearch onSubmit={handleSubmit(onSubmit)} />
+                  </button>
                 </button>
               </span>
             </form>
@@ -75,31 +67,38 @@ export function Header() {
             <PrimaryButton
               text="Suggest a character"
               onClick={() => console.log("suggesting character")}
+              paddingY="0.625rem"
+              paddingX="2rem"
             />
 
-            <SecondaryButton
-              text="Admin"
-              onClick={() => console.log("suggesting character")}
-            />
+            <SecondaryButton text="Admin" paddingY="0.625rem" paddingX="2rem" />
           </div>
         </div>
 
         <div className="h-1/3 flex justify-evenly items-center">
           <SecondaryButton
             text="All aromantic characters"
-            onClick={() => changeLocation(`/results?all=AROMANTIC`)}
+            onClick={() => changeLocation(`/all-characters/AROMANTIC`)}
+            paddingY="0.625rem"
+            paddingX="2rem"
           />
           <SecondaryButton
             text="All asexual characters"
-            onClick={() => changeLocation(`/results?all=ASEXUAL`)}
+            onClick={() => changeLocation(`/all-characters/ASEXUAL`)}
+            paddingY="0.625rem"
+            paddingX="2rem"
           />
           <SecondaryButton
             text="Canon aromantic characters"
-            onClick={() => changeLocation(`/results?canon=AROMANTIC`)}
+            onClick={() => changeLocation(`/canon-characters/AROMANTIC`)}
+            paddingY="0.625rem"
+            paddingX="2rem"
           />
           <SecondaryButton
             text="Canon asexual characters"
-            onClick={() => changeLocation(`/results?canon=ASEXUAL`)}
+            onClick={() => changeLocation(`/canon-characters/ASEXUAL`)}
+            paddingY="0.625rem"
+            paddingX="2rem"
           />
         </div>
       </div>

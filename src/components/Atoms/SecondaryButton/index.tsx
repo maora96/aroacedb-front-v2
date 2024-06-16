@@ -2,12 +2,24 @@ import styles from "./styles.module.scss";
 
 interface ISecondaryButton {
   text: string;
-  onClick: () => void;
+  onClick?: () => void;
+  paddingY: string;
+  paddingX: string;
 }
 
-export function SecondaryButton({ text, onClick }: ISecondaryButton) {
+export function SecondaryButton({
+  text,
+  onClick,
+  paddingY,
+  paddingX,
+}: ISecondaryButton) {
   return (
-    <button type="button" className={styles.button} onClick={onClick}>
+    <button
+      type="button"
+      className={styles.button}
+      onClick={onClick}
+      style={{ padding: `${paddingY} ${paddingX}` }}
+    >
       {text}
     </button>
   );
