@@ -17,11 +17,6 @@ export function StoryCard({ story }: { story: Story }) {
         <div className={styles.cardContent}>
           <div className={styles.cardCompostTitle}>
             <h5 className={styles.cardSimpleTitle}>{story?.title}</h5>
-
-            {/* <span>
-              {matcher[story?.gender]}
-              {story?.pairing && ` | ${story.pairing}`}
-            </span> */}
           </div>
           <span className={styles.cardSimpleParagraph}>
             by {story?.author}
@@ -32,13 +27,7 @@ export function StoryCard({ story }: { story: Story }) {
               <Tag color="#b5de9d" text={matcher[genre]} key={genre} />
             ))}
           </div>
-          {/* <p className={styles.cardParagraph}>
-            {character?.name} is a {character?.importance} character.
-          </p> */}
-          {/* <div className={styles.cardInfo}>
-            <Tag color="#800080" text={character?.sexualOrientation} />
-            <Tag color="#b5de9d" text={character?.romanticOrientation} />
-          </div> */}
+
           <hr className={styles.cardDivider} />
 
           <div className="flex justify-self-end self-end mt-6 gap-x-4">

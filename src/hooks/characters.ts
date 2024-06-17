@@ -2,6 +2,7 @@ import { useQuery } from "react-query";
 import {
   getAllCharacters,
   getCanonCharacters,
+  getCharacter,
   getRandomCharacter,
   getSearchedCharacters,
 } from "../api/characters";
@@ -9,6 +10,14 @@ import { IGetAllOrCanonCharacters, IGetSearchedCharacters } from "../types";
 
 export const useGetRandomCharacter = () => {
   return useQuery("getRandomcCharacter", async () => getRandomCharacter(), {
+    staleTime: 5000,
+    refetchOnWindowFocus: false,
+    keepPreviousData: true,
+  });
+};
+
+export const useGetCharacter = (id: string) => {
+  return useQuery("getCharacter", async () => getCharacter(id), {
     staleTime: 5000,
     refetchOnWindowFocus: false,
     keepPreviousData: true,

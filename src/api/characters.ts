@@ -11,6 +11,12 @@ export const getRandomCharacter = async () => {
   return data.result;
 };
 
+export const getCharacter = async (id: string) => {
+  const { data } = await api.get(`/characters/${id}`);
+
+  return data.result;
+};
+
 export const getSearchedCharacters = async ({
   search,
   amount,
