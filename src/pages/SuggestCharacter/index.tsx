@@ -74,8 +74,6 @@ export function SuggestCharacter() {
         typeOfRep: data.typeOfRep,
         approved: false,
       };
-
-      console.log(payload);
       createCharacterMutation.mutate(payload);
     }
   };

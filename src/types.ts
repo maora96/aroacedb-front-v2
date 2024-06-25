@@ -60,6 +60,21 @@ export interface ICreateCharacter {
   typeOfRep: TypeOfRep;
 }
 
+export interface ICreateStory {
+  title: string;
+  author: string;
+  series: string | null;
+  volume: number | null;
+  genres: Genres[];
+  cover: string;
+  description: string;
+  length: Length;
+  ageGroup: AgeGroup;
+  approved: boolean;
+  notesAndWarnings: string | null;
+  repNotesAndWarnings: string | null;
+}
+
 export type Story = {
   title: string;
   author: string;

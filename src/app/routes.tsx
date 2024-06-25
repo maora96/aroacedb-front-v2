@@ -9,7 +9,8 @@ import { AllCharacters } from "../pages/AllCharacters";
 import { AdvancedResults } from "../pages/AdvancedResults";
 import { Character } from "../pages/Character";
 import { SuggestCharacter } from "../pages/SuggestCharacter";
-import { CharacterSuccess } from "../pages/CharacterSuccess";
+import { Success } from "../pages/CharacterSuccess";
+import { SuggestStory } from "../pages/SuggestStory";
 
 export function MainRoutes() {
   return (
@@ -24,7 +25,8 @@ export function MainRoutes() {
       <Route path="/advanced-results" element={<AdvancedResults />} />
       <Route path="/character/:id" element={<Character />} />
       <Route path="/suggest-character" element={<SuggestCharacter />} />
-      <Route path="/character-success" element={<CharacterSuccess />} />
+      <Route path="/suggest-story" element={<SuggestStory />} />
+      <Route path="/success" element={<Success />} />
     </Routes>
   );
 }
