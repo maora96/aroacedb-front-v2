@@ -9,7 +9,7 @@ import { AllCharacters } from "../pages/AllCharacters";
 import { AdvancedResults } from "../pages/AdvancedResults";
 import { Character } from "../pages/Character";
 import { SuggestCharacter } from "../pages/SuggestCharacter";
-import { Success } from "../pages/CharacterSuccess";
+import { Success } from "../pages/Success";
 import { SuggestStory } from "../pages/SuggestStory";
 
 export function MainRoutes() {

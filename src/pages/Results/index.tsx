@@ -5,6 +5,8 @@ import { useEffect, useMemo, useState } from "react";
 import { Character, IGetSearchedCharacters } from "../../types";
 import { CharacterCard } from "../../components/CharacterCard";
 import { GlobalLayout } from "../../components/GlobalLayout";
+import { GeneralCard } from "../../components/GeneralCard";
+import styles from "./styles.module.scss";
 
 function useQuery() {
   const { search } = useLocation();
@@ -39,6 +41,18 @@ export function Results() {
           data?.result?.map((character: Character) => {
             return <CharacterCard character={character} key={character.id} />;
           })}
+        {data?.result?.length === 0 && (
+          <GeneralCard>
+            <div className={styles.cardContent}>
+              <h5 className={styles.cardTitle}>No entries found!</h5>
+
+              <p className={styles.cardParagraph}>
+                You can always suggest a character or story if you haven't found
+                what you were looking for.
+              </p>
+            </div>
+          </GeneralCard>
+        )}
       </>
     </GlobalLayout>
   );

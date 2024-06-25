@@ -5,6 +5,8 @@ import { useMutation } from "react-query";
 import { getAdvancedResults } from "../../api/characters";
 import { CharacterCard } from "../../components/CharacterCard";
 import { StoryCard } from "../../components/StoryCard";
+import { GeneralCard } from "../../components/GeneralCard";
+import styles from "./styles.module.scss";
 
 export function AdvancedResults() {
   const [content, setContent] = useState<any>();
@@ -40,6 +42,18 @@ export function AdvancedResults() {
             return <StoryCard story={content} key={content.id} />;
           return <CharacterCard character={content} key={content.id} />;
         })}
+        {content?.result?.length === 0 && (
+          <GeneralCard>
+            <div className={styles.cardContent}>
+              <h5 className={styles.cardTitle}>No entries found!</h5>
+
+              <p className={styles.cardParagraph}>
+                You can always suggest a character or story if you haven't found
+                what you were looking for.
+              </p>
+            </div>
+          </GeneralCard>
+        )}
       </>
     </GlobalLayout>
   );
