@@ -66,7 +66,7 @@ export function Header() {
           <div className="flex w-1/4 items-center gap-x-4">
             <PrimaryButton
               text="Suggest a character"
-              onClick={() => console.log("suggesting character")}
+              onClick={() => navigate("/suggest-character")}
               paddingY="0.625rem"
               paddingX="2rem"
             />

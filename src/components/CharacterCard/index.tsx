@@ -4,8 +4,10 @@ import { Character } from "../../types";
 import { Tag } from "../Atoms/Tag";
 import styles from "./styles.module.scss";
 import { PrimaryButton } from "../Atoms/PrimaryButton";
+import { useNavigate } from "react-router-dom";
 
 export function CharacterCard({ character }: { character: Character }) {
+  const navigate = useNavigate();
   return (
     <GeneralCard>
       <>
@@ -42,13 +44,18 @@ export function CharacterCard({ character }: { character: Character }) {
           <hr className={styles.cardDivider} />
 
           <div className="flex justify-self-end self-end mt-6 gap-x-4">
-            <PrimaryButton
+            {/* <PrimaryButton
               text="book in series"
               paddingY="0.625rem"
               paddingX="2rem"
+            /> */}
+
+            <PrimaryButton
+              text="profile"
+              paddingY="0.625rem"
+              paddingX="2rem"
+              onClick={() => navigate(`/character/${character.id}`)}
             />
-            <PrimaryButton text="author" paddingY="0.625rem" paddingX="2rem" />
-            <PrimaryButton text="profile" paddingY="0.625rem" paddingX="2rem" />
           </div>
         </div>
       </>

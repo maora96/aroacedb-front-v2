@@ -2,17 +2,19 @@ import { useGetCharacter } from "../../hooks/characters";
 import { GeneralCard } from "../../components/GeneralCard";
 import { GlobalLayout } from "../../components/GlobalLayout";
 import styles from "./styles.module.scss";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Tag } from "../../components/Atoms/Tag";
 import { Story } from "../../types";
 import { ShadowlessGeneralCard } from "../../components/ShadowlessGeneralCard";
 import { matcher } from "../../utils/dictionary";
+import { PrimaryButton } from "../../components/Atoms/PrimaryButton";
 
 export function Character() {
   let { id } = useParams();
+  const navigate = useNavigate();
 
   const { data } = useGetCharacter(id!);
-  console.log(data);
+
   return (
     <GlobalLayout>
       <>
@@ -91,7 +93,21 @@ export function Character() {
 
         <GeneralCard>
           <div className={styles.storiesContent}>
-            <h5 className={styles.title}>Stories</h5>
+            <h5 className={styles.title}>
+              Stories{" "}
+              <PrimaryButton
+                text={"Suggest a story!"}
+                paddingY="0.625rem"
+                paddingX="2rem"
+                onClick={() =>
+                  navigate(`/suggest-story`, {
+                    state: {
+                      characterId: data.id,
+                    },
+                  })
+                }
+              />
+            </h5>
             {data?.stories?.map((story: Story) => (
               <ShadowlessGeneralCard>
                 <>
@@ -145,16 +161,6 @@ export function Character() {
                         <span>{story?.repNotesAndWarnings}</span>
                       </div>
                     </div>
-
-                    {/* <div className="flex justify-self-end self-end mt-6 gap-x-4">
-            <PrimaryButton
-              text="book in series"
-              paddingY="0.625rem"
-              paddingX="2rem"
-            />
-            <PrimaryButton text="author" paddingY="0.625rem" paddingX="2rem" />
-            <PrimaryButton text="profile" paddingY="0.625rem" paddingX="2rem" />
-          </div> */}
                   </div>
                 </>
               </ShadowlessGeneralCard>

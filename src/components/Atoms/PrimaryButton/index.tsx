@@ -5,6 +5,7 @@ interface IPrimaryButton {
   onClick?: () => void;
   paddingY: string;
   paddingX: string;
+  buttonType?: "button" | "submit" | "reset" | undefined;
 }
 
 export function PrimaryButton({
@@ -12,10 +13,11 @@ export function PrimaryButton({
   onClick,
   paddingY,
   paddingX,
+  buttonType,
 }: IPrimaryButton) {
   return (
     <button
-      type="button"
+      type={buttonType ? `${buttonType}` : "button"}
       className={styles.button}
       onClick={onClick}
       style={{ padding: `${paddingY} ${paddingX}` }}

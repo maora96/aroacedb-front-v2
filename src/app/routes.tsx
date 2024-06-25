@@ -8,6 +8,8 @@ import { CanonCharacters } from "../pages/CanonCharacters";
 import { AllCharacters } from "../pages/AllCharacters";
 import { AdvancedResults } from "../pages/AdvancedResults";
 import { Character } from "../pages/Character";
+import { SuggestCharacter } from "../pages/SuggestCharacter";
+import { CharacterSuccess } from "../pages/CharacterSuccess";
 
 export function MainRoutes() {
   return (
@@ -21,6 +23,8 @@ export function MainRoutes() {
       <Route path="/all-characters/:param" element={<AllCharacters />} />
       <Route path="/advanced-results" element={<AdvancedResults />} />
       <Route path="/character/:id" element={<Character />} />
+      <Route path="/suggest-character" element={<SuggestCharacter />} />
+      <Route path="/character-success" element={<CharacterSuccess />} />
     </Routes>
   );
 }

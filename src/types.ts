@@ -43,6 +43,23 @@ export type Character = {
   updatedAt: Date;
 };
 
+export interface ICreateCharacter {
+  approved: boolean;
+  author: string;
+  cover: string | null;
+  gender: Gender;
+  genres: Genres[];
+  importance: Importance;
+  name: string;
+  notesAndWarnings: string | null;
+  pairing: Pairing | null;
+  relationships: Relationship[] | null;
+  romanticOrientation: RomanticOrientation;
+  series: string | null;
+  sexualOrientation: SexualOrientation;
+  typeOfRep: TypeOfRep;
+}
+
 export type Story = {
   title: string;
   author: string;

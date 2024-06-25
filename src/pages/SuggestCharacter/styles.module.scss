@@ -21,13 +21,60 @@
   width: 100%;
 }
 
-.storiesContent {
+.block {
   display: flex;
-  padding: 1.5rem;
-  justify-content: flex-start;
-  flex-direction: column;
+  margin-top: 1rem;
+  gap: 0.6rem;
+}
+
+.box {
+  width: 50%;
+
+  select {
+    margin-bottom: 0.8rem;
+  }
+}
+
+.option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.7rem;
+  margin-top: 1rem;
+
+  span {
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    color: #7d7d82;
+    font-size: 0.7rem;
+  }
+}
+
+.select {
+  -webkit-appearance: none;
+  padding: 0.5rem 1.875rem 0.5rem 0.75rem;
+
+  border: 1px solid #e8eaed;
+  border-radius: 5px;
+  background: white;
+  box-shadow: 0 1px 3px -2px #9098a9;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.7rem;
+  color: #7d7d82;
   width: 100%;
-  gap: 1rem;
+}
+
+.multi {
+  border: 1px solid #e8eaed;
+  border-radius: 5px;
+  background: white;
+  box-shadow: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.7rem;
+  color: #7d7d82;
+  width: 100%;
 }
 
 .title {
@@ -36,9 +83,11 @@
   font-weight: 500;
   font-size: 1.25rem;
   line-height: 1.75rem;
+}
 
-  display: flex;
-  justify-content: space-between;
+.form {
+  width: 100%;
+  height: 100%;
 }
 
 .row {
@@ -54,7 +103,7 @@
   font-size: 0.7rem;
 }
 
-.subtitle {
+.label {
   margin-top: 0.8rem;
   color: #7d7d82;
   text-transform: uppercase;
@@ -62,10 +111,46 @@
   font-size: 0.7rem;
 }
 
+.subtitle {
+  margin-top: 0.4rem;
+
+  font-size: 0.7rem;
+}
+
 .item {
   display: flex;
   flex-direction: column;
   width: 100%;
+  margin-top: 1rem;
+
+  input,
+  textarea {
+    width: 100%;
+    border: 1px solid #e8eaed;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 1px 3px -2px #9098a9;
+    font-family: inherit;
+    font-size: 0.7rem;
+    color: #7d7d82;
+    padding: 0.5rem 1.875rem 0.5rem 0.75rem;
+    margin-top: 0.5rem;
+  }
+
+  input:last-child {
+    margin-bottom: 1rem;
+  }
+}
+.checkbox {
+  display: flex;
+  width: 100%;
+  margin-top: 1rem;
+  align-items: center;
+  gap: 0.5rem;
+
+  .label {
+    margin-top: 0;
+  }
 }
 
 .unique {
@@ -73,14 +158,6 @@
   flex-direction: column;
   width: 100%;
   gap: 0.5rem;
-}
-
-.item:nth-child(even) {
-  align-items: center;
-}
-
-.item:last-child {
-  align-items: flex-end;
 }
 
 .genres {
@@ -175,4 +252,9 @@
 .cardDivider {
   margin: 1rem 0;
   color: colors.$primary-light;
+}
+
+.error {
+  color: red;
+  margin-bottom: 1rem;
 }

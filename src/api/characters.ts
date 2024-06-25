@@ -1,5 +1,6 @@
 import { api } from ".";
 import {
+  ICreateCharacter,
   IGetAdvancedSearchedCharacters,
   IGetAllOrCanonCharacters,
   IGetSearchedCharacters,
@@ -66,6 +67,14 @@ export const getAdvancedResults = async ({
       ...params,
     }
   );
+
+  return data;
+};
+
+export const createCharacter = async (body: ICreateCharacter) => {
+  const data = api.post(`/characters`, {
+    ...body,
+  });
 
   return data;
 };
