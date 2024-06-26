@@ -136,7 +136,10 @@ export function Sidebar({
           <>
             {" "}
             <div className={styles.option}>
-              <span>Sexual Orientation</span>
+              <span>
+                Sexual
+                <br /> Orientation
+              </span>
               <select
                 {...register("sexualOrientation")}
                 className={styles.select}
@@ -150,7 +153,9 @@ export function Sidebar({
               </select>
             </div>
             <div className={styles.option}>
-              <span>Romantic Orientation</span>
+              <span>
+                Romantic <br /> Orientation
+              </span>
               <select
                 {...register("romanticOrientation")}
                 className={styles.select}
