@@ -30,7 +30,7 @@ export function CharacterCard({ character }: { character: Character }) {
             {character?.series && ` | in the ${character?.series} series`}
           </span>
           <div className={styles.cardGenres}>
-            {character?.genres.map((genre: string) => (
+            {character?.genres?.map((genre: string) => (
               <Tag color="#b5de9d" text={matcher[genre]} key={genre} />
             ))}
           </div>

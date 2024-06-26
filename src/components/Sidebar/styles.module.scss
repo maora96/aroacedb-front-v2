@@ -9,6 +9,8 @@
   width: 100%;
   display: flex;
   gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .form {
@@ -29,6 +31,7 @@
   align-items: center;
   font-size: 0.7rem;
   margin-top: 1rem;
+  flex-wrap: wrap;
 
   span {
     text-transform: uppercase;

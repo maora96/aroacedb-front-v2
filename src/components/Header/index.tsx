@@ -5,7 +5,7 @@ import { SecondaryButton } from "../Atoms/SecondaryButton";
 import styles from "./styles.module.scss";
 import { FaSearch } from "react-icons/fa";
 
-export function Header() {
+export function Header({ query }: { query?: string | null }) {
   const {
     register,
     handleSubmit,
@@ -47,6 +47,7 @@ export function Header() {
                 placeholder="Search for characters..."
                 className="w-full rounded-lg border-green border border-solid py-2.5 pe-10 shadow-sm sm:text-sm outline-lightgreen p-2"
                 {...register("search")}
+                defaultValue={query ? query : ""}
               />
               <span className="absolute inset-y-0 end-0 grid w-10 place-content-center">
                 <button

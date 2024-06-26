@@ -1,14 +1,30 @@
-import { ReactElement } from "react";
+import { ReactElement, useMemo } from "react";
 import { Header } from "../Header";
 import { Sidebar } from "../Sidebar";
 import styles from "./styles.module.scss";
+import { useLocation } from "react-router-dom";
 
-export function GlobalLayout({ children }: { children: ReactElement }) {
+function useQuery() {
+  const { search } = useLocation();
+
+  return useMemo(() => new URLSearchParams(search), [search]);
+}
+
+export function GlobalLayout({
+  children,
+  payload,
+  search,
+}: {
+  children: ReactElement;
+  payload?: any;
+  search?: string | null;
+}) {
+  let query = useQuery().get("search");
   return (
     <>
-      <Header />
+      <Header query={query} />
       <div className={styles.container}>
-        <Sidebar />
+        <Sidebar payload={payload} search={search} />
         <main className={styles.home}>
           <div className={styles.content}>{children}</div>
         </main>

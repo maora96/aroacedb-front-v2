@@ -26,8 +26,16 @@ import {
 } from "../../utils/dictionary";
 import { useNavigate } from "react-router-dom";
 
-export function Sidebar() {
-  const [selectedSearch, setSelectedSearch] = useState("characters");
+export function Sidebar({
+  payload,
+  search,
+}: {
+  payload?: any;
+  search?: string | null;
+}) {
+  const [selectedSearch, setSelectedSearch] = useState(
+    search ? search : "characters"
+  );
   const {
     register,
     reset,
@@ -132,6 +140,7 @@ export function Sidebar() {
               <select
                 {...register("sexualOrientation")}
                 className={styles.select}
+                defaultValue={payload?.sexualOrientation}
               >
                 {sexualOrientations.map((value: string) => (
                   <option value={value} key={value}>
@@ -145,6 +154,7 @@ export function Sidebar() {
               <select
                 {...register("romanticOrientation")}
                 className={styles.select}
+                defaultValue={payload?.romanticOrientation}
               >
                 {romanticOrientations.map((value: string) => (
                   <option value={value} key={value}>
@@ -155,7 +165,11 @@ export function Sidebar() {
             </div>
             <div className={styles.option}>
               <span>Gender</span>
-              <select {...register("gender")} className={styles.select}>
+              <select
+                {...register("gender")}
+                className={styles.select}
+                defaultValue={payload?.gender}
+              >
                 {genders.map((value: string) => (
                   <option value={value} key={value}>
                     {normalize(value)}
@@ -165,7 +179,11 @@ export function Sidebar() {
             </div>
             <div className={styles.option}>
               <span>Type of Rep</span>
-              <select {...register("typeOfRep")} className={styles.select}>
+              <select
+                {...register("typeOfRep")}
+                className={styles.select}
+                defaultValue={payload?.typeOfRep}
+              >
                 {typeOfReps.map((value: string) => (
                   <option value={value} key={value}>
                     {normalize(value)}
@@ -175,7 +193,11 @@ export function Sidebar() {
             </div>
             <div className={styles.option}>
               <span>Genre</span>
-              <select {...register("genres")} className={styles.select}>
+              <select
+                {...register("genres")}
+                className={styles.select}
+                defaultValue={payload?.genres}
+              >
                 {genres.map((value: string) => (
                   <option value={value} key={value}>
                     {normalize(value)}
@@ -185,7 +207,11 @@ export function Sidebar() {
             </div>
             <div className={styles.option}>
               <span>Importance</span>
-              <select {...register("importance")} className={styles.select}>
+              <select
+                {...register("importance")}
+                className={styles.select}
+                defaultValue={payload?.importance}
+              >
                 {importances.map((value: string) => (
                   <option value={value} key={value}>
                     {normalize(value)}
@@ -195,7 +221,11 @@ export function Sidebar() {
             </div>
             <div className={styles.option}>
               <span>Pairing</span>
-              <select {...register("pairing")} className={styles.select}>
+              <select
+                {...register("pairing")}
+                className={styles.select}
+                defaultValue={payload?.pairing}
+              >
                 {pairings.map((value: string) => (
                   <option value={value} key={value}>
                     {normalize(value)}
@@ -205,7 +235,11 @@ export function Sidebar() {
             </div>
             <div className={styles.option}>
               <span>Relationship</span>
-              <select {...register("relationships")} className={styles.select}>
+              <select
+                {...register("relationships")}
+                className={styles.select}
+                defaultValue={payload?.relationships}
+              >
                 {relationships.map((value: string) => (
                   <option value={value} key={value}>
                     {normalize(value)}
@@ -219,7 +253,11 @@ export function Sidebar() {
             {" "}
             <div className={styles.option}>
               <span>Genre</span>
-              <select {...register("genres")} className={styles.select}>
+              <select
+                {...register("genres")}
+                className={styles.select}
+                defaultValue={payload?.genres}
+              >
                 {genres.map((value: string) => (
                   <option value={value} key={value}>
                     {normalize(value)}
@@ -229,7 +267,11 @@ export function Sidebar() {
             </div>
             <div className={styles.option}>
               <span>Age group</span>
-              <select {...register("ageGroup")} className={styles.select}>
+              <select
+                {...register("ageGroup")}
+                className={styles.select}
+                defaultValue={payload?.ageGroup}
+              >
                 {ageGroups.map((value: string) => (
                   <option value={value} key={value}>
                     {normalize(value)}
@@ -239,7 +281,11 @@ export function Sidebar() {
             </div>
             <div className={styles.option}>
               <span>Length</span>
-              <select {...register("length")} className={styles.select}>
+              <select
+                {...register("length")}
+                className={styles.select}
+                defaultValue={payload?.length}
+              >
                 {lengths.map((value: string) => (
                   <option value={value} key={value}>
                     {normalize(value)}

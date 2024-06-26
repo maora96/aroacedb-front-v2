@@ -35,7 +35,10 @@ export function AdvancedResults() {
   }, [location]);
 
   return (
-    <GlobalLayout>
+    <GlobalLayout
+      payload={location.state.payload}
+      search={location.state.search}
+    >
       <>
         {content?.result?.map((content: any) => {
           if (search === "stories")
