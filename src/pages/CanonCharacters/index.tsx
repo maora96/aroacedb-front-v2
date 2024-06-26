@@ -11,7 +11,7 @@ export function CanonCharacters() {
 
   const [canonFilters, setCanonFilters] = useState<IGetAllOrCanonCharacters>({
     param: param ?? undefined,
-    amount: 20,
+    amount: 1000,
     page: 1,
   });
 

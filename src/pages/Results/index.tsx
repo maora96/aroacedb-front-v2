@@ -19,7 +19,7 @@ export function Results() {
 
   const [filters, setFilters] = useState<IGetSearchedCharacters>({
     search: undefined,
-    amount: 20,
+    amount: 1000,
     page: 1,
   });
 
