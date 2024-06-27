@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { PrimaryButton } from "../Atoms/PrimaryButton";
 import { SecondaryButton } from "../Atoms/SecondaryButton";
 import styles from "./styles.module.scss";
 

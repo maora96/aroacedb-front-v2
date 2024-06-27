@@ -2,16 +2,15 @@ import { useGetCharacter } from "../../hooks/characters";
 import { GeneralCard } from "../../components/GeneralCard";
 import { GlobalLayout } from "../../components/GlobalLayout";
 import styles from "./styles.module.scss";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Tag } from "../../components/Atoms/Tag";
 import { Story } from "../../types";
 import { ShadowlessGeneralCard } from "../../components/ShadowlessGeneralCard";
 import { matcher } from "../../utils/dictionary";
-import { PrimaryButton } from "../../components/Atoms/PrimaryButton";
 
 export function Character() {
   let { id } = useParams();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const { data } = useGetCharacter(id!);
 
