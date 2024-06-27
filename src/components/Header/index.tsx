@@ -48,28 +48,16 @@ export function Header({ query }: { query?: string | null }) {
                 {...register("search")}
                 defaultValue={query ? query : ""}
               />
-              {/* <span className="absolute inset-y-0 end-0 grid w-10 place-content-center">
-                <button
-                  type="button"
-                  className="text-gray-600 hover:text-gray-700"
-                >
-                  <span className="sr-only">Search</span>
-
-                  <button type="submit">
-                    <FaSearch onSubmit={handleSubmit(onSubmit)} />
-                  </button>
-                </button>
-              </span> */}
             </form>
           </div>
 
           <div className={styles.searchButtons}>
-            <PrimaryButton
+            {/* <PrimaryButton
               text="Suggest a character"
               onClick={() => navigate("/suggest-character")}
               paddingY="0.625rem"
               paddingX="2rem"
-            />
+            /> */}
 
             <SecondaryButton text="Admin" paddingY="0.625rem" paddingX="2rem" />
           </div>

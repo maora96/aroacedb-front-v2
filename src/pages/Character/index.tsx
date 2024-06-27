@@ -95,7 +95,7 @@ export function Character() {
           <div className={styles.storiesContent}>
             <h5 className={styles.title}>
               Stories{" "}
-              <PrimaryButton
+              {/* <PrimaryButton
                 text={"Suggest a story!"}
                 paddingY="0.625rem"
                 paddingX="2rem"
@@ -106,7 +106,7 @@ export function Character() {
                     },
                   })
                 }
-              />
+              /> */}
             </h5>
             {data?.stories?.map((story: Story) => (
               <ShadowlessGeneralCard>
