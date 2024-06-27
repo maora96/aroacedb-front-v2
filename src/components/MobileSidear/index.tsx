@@ -1,10 +1,3 @@
-// import { Button, Input } from "antd";
-// import { Space } from "antd";
-// import styles from "./styles.module.scss";
-// // import { useGetSearchedCharacter } from "../../hooks/characters";
-// // import { useState } from "react";
-// // import { IGetSearchedCharacters } from "../../types";
-// import { useNavigate } from "react-router-dom";
 import styles from "./styles.module.scss";
 
 import { useState } from "react";
@@ -26,12 +19,14 @@ import {
 } from "../../utils/dictionary";
 import { useNavigate } from "react-router-dom";
 
-export function Sidebar({
+export function MobileSidebar({
   payload,
   search,
+  setIsMobileSidebarVisible,
 }: {
   payload?: any;
   search?: string | null;
+  setIsMobileSidebarVisible: (isVisible: boolean) => void;
 }) {
   const [selectedSearch, setSelectedSearch] = useState(
     search ? search : "characters"
@@ -41,7 +36,6 @@ export function Sidebar({
     reset,
     handleSubmit,
     formState: {},
-    setValue,
   } = useForm();
 
   const navigate = useNavigate();
@@ -130,25 +124,7 @@ export function Sidebar({
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.form}>
-          <span>Filter by</span>{" "}
-          <span
-            onClick={() => {
-              reset();
-              setValue("sexualOrientation", "Choose one...");
-              setValue("romanticOrientation", "Choose one...");
-              setValue("gender", "Choose one...");
-              setValue("typeOfRep", "Choose one...");
-              setValue("genres", "Choose one...");
-              setValue("importance", "Choose one...");
-              setValue("pairing", "Choose one...");
-              setValue("relationships", "Choose one...");
-
-              setValue("ageGroup", "Choose one...");
-              setValue("length", "Choose one...");
-            }}
-          >
-            Clear
-          </span>
+          <span>Filter by</span> <span onClick={() => reset()}>Clear</span>
         </div>
 
         {selectedSearch === "characters" ? (
@@ -323,6 +299,12 @@ export function Sidebar({
           <PrimaryButton
             text="Search!"
             onClick={handleSubmit(onSubmit)}
+            paddingY="0.625rem"
+            paddingX="3rem"
+          />
+          <SecondaryButton
+            text="Close"
+            onClick={() => setIsMobileSidebarVisible(false)}
             paddingY="0.625rem"
             paddingX="3rem"
           />

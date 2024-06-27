@@ -3,7 +3,6 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { PrimaryButton } from "../Atoms/PrimaryButton";
 import { SecondaryButton } from "../Atoms/SecondaryButton";
 import styles from "./styles.module.scss";
-import { FaSearch } from "react-icons/fa";
 
 export function Header({ query }: { query?: string | null }) {
   const {
@@ -23,8 +22,8 @@ export function Header({ query }: { query?: string | null }) {
   };
 
   return (
-    <header className="w-full h-40 flex border border-lightgreen">
-      <div className="w-1/6 flex flex-col justify-center items-center gap-y-2">
+    <header className={styles.container}>
+      <div className={styles.home}>
         <SecondaryButton
           text="The AroAce Database"
           onClick={() => navigate("/", { replace: true })}
@@ -37,9 +36,9 @@ export function Header({ query }: { query?: string | null }) {
           <a href="/contact">Contact</a>
         </nav>
       </div>
-      <div className="w-5/6 border-l border-l-lightgreen">
-        <div className="h-2/3 flex items-center px-8 gap-x-4 w-full border-b border-b-lightgreen">
-          <div className="relative w-3/4 ">
+      <div className={styles.searchContainer}>
+        <div className={styles.search}>
+          <div className={styles.searchBar}>
             <form onSubmit={handleSubmit(onSubmit)}>
               <input
                 type="text"
@@ -49,7 +48,7 @@ export function Header({ query }: { query?: string | null }) {
                 {...register("search")}
                 defaultValue={query ? query : ""}
               />
-              <span className="absolute inset-y-0 end-0 grid w-10 place-content-center">
+              {/* <span className="absolute inset-y-0 end-0 grid w-10 place-content-center">
                 <button
                   type="button"
                   className="text-gray-600 hover:text-gray-700"
@@ -60,11 +59,11 @@ export function Header({ query }: { query?: string | null }) {
                     <FaSearch onSubmit={handleSubmit(onSubmit)} />
                   </button>
                 </button>
-              </span>
+              </span> */}
             </form>
           </div>
 
-          <div className="flex w-1/4 items-center gap-x-4">
+          <div className={styles.searchButtons}>
             <PrimaryButton
               text="Suggest a character"
               onClick={() => navigate("/suggest-character")}
@@ -76,7 +75,7 @@ export function Header({ query }: { query?: string | null }) {
           </div>
         </div>
 
-        <div className="h-1/3 flex justify-evenly items-center">
+        <div className={styles.customButtons}>
           <SecondaryButton
             text="All aromantic characters"
             onClick={() => changeLocation(`/all-characters/AROMANTIC`)}

@@ -1,17 +1,25 @@
 @use "../../utils/colors.scss" as colors;
 
-.cardContent {
+.rowContent {
   display: flex;
   padding: 1.5rem;
-  justify-content: flex-start;
-  flex-direction: column;
+  justify-content: space-between;
   width: 100%;
+  gap: 1rem;
+  align-items: center;
+}
+
+.content {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  gap: 1rem;
+  align-items: center;
 }
 
 .cardTitle {
   text-align: center;
   width: 100%;
-  margin-bottom: 1rem;
   text-transform: uppercase;
   font-weight: 500;
   font-size: 1.25rem;
@@ -19,7 +27,6 @@
 }
 
 .cardSimpleTitle {
-  margin-bottom: 1rem;
   text-transform: uppercase;
   font-weight: 500;
   font-size: 1.25rem;
@@ -29,32 +36,23 @@
 .cardCompostTitle {
   display: flex;
   justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
 }
 
 .cardParagraph {
   font-size: 0.875rem;
   line-height: 1.25rem;
-  margin-bottom: 1.5rem;
 }
 
 .cardSimpleParagraph {
   font-size: 0.875rem;
   line-height: 1.25rem;
-  margin-bottom: 0.5rem;
 }
 
 .cardGenres {
-  margin-bottom: 0.5rem;
   display: flex;
   gap: 0.5rem;
-}
-
-.cardImage {
-  object-fit: cover;
-  border-top-left-radius: 0.5rem;
-  border-bottom-left-radius: 0.5rem;
-  width: 12rem;
-  height: auto;
 }
 
 .cardInfo {
@@ -67,6 +65,11 @@
   color: colors.$primary-light;
 }
 
+.button {
+  justify-self: flex-end;
+  align-self: flex-end;
+}
+
 @media (max-width: 575.98px) {
   .container {
     flex-direction: column;
@@ -74,5 +77,21 @@
 
   .cardImage {
     width: 100%;
+  }
+
+  .content {
+    flex-direction: column;
+  }
+
+  .rowContent {
+    flex-direction: column;
+  }
+
+  .cardSimpleParagraph {
+    text-align: center;
+  }
+
+  .button {
+    align-self: center;
   }
 }

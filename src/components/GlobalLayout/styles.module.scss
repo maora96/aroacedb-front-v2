@@ -4,6 +4,7 @@
   width: 100%;
   height: calc(100vh - 160px);
   display: flex;
+  position: relative;
 }
 
 .home {
@@ -22,4 +23,32 @@
   align-items: center;
   flex-direction: column;
   row-gap: 2rem;
+}
+
+.mobileSidebar {
+  display: none;
+}
+
+@media (max-width: 575.98px) {
+  .home {
+    width: 100%;
+  }
+
+  .mobileSidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    position: fixed;
+    bottom: 0;
+    color: white;
+    text-transform: uppercase;
+    background-color: #393e46;
+    font-size: 0.7rem;
+    line-height: 1.25rem;
+    letter-spacing: 0.1rem;
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
+  }
 }

@@ -1,5 +1,10 @@
 @use "../../utils/colors.scss" as colors;
 
+.container {
+  width: 100%;
+  display: flex;
+}
+
 .cardContent {
   display: flex;
   padding: 1.5rem;
@@ -65,4 +70,14 @@
 .cardDivider {
   margin: 1rem 0;
   color: colors.$primary-light;
+}
+
+@media (max-width: 575.98px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .cardImage {
+    width: 100%;
+  }
 }

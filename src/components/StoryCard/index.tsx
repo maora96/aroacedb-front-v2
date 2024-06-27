@@ -10,7 +10,7 @@ export function StoryCard({ story }: { story: Story }) {
   const navigate = useNavigate();
   return (
     <GeneralCard>
-      <>
+      <div className={styles.container}>
         <img
           className={styles.cardImage}
           src={story?.cover || ""}
@@ -33,12 +33,6 @@ export function StoryCard({ story }: { story: Story }) {
           <hr className={styles.cardDivider} />
 
           <div className="flex justify-self-end self-end mt-6 gap-x-4">
-            {/* <PrimaryButton
-              text="book in series"
-              paddingY="0.625rem"
-              paddingX="2rem"
-            /> */}
-
             <PrimaryButton
               text="profile"
               paddingY="0.625rem"
@@ -47,7 +41,7 @@ export function StoryCard({ story }: { story: Story }) {
             />
           </div>
         </div>
-      </>
+      </div>
     </GeneralCard>
   );
 }

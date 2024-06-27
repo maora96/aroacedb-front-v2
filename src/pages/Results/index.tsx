@@ -7,6 +7,9 @@ import { CharacterCard } from "../../components/CharacterCard";
 import { GlobalLayout } from "../../components/GlobalLayout";
 import { GeneralCard } from "../../components/GeneralCard";
 import styles from "./styles.module.scss";
+import { SecondaryButton } from "../../components/Atoms/SecondaryButton";
+import { PrimaryButton } from "../../components/Atoms/PrimaryButton";
+import { CharacterRow } from "../../components/CharacterRow";
 
 function useQuery() {
   const { search } = useLocation();
@@ -17,6 +20,7 @@ function useQuery() {
 export function Results() {
   let query = useQuery().get("search");
 
+  const [viewMode, setViewMode] = useState<string>("card");
   const [filters, setFilters] = useState<IGetSearchedCharacters>({
     search: undefined,
     amount: 1000,
@@ -37,9 +41,46 @@ export function Results() {
   return (
     <GlobalLayout>
       <>
+        <div className={styles.buttons}>
+          {viewMode === "card" ? (
+            <PrimaryButton
+              text="Card View"
+              onClick={() => setViewMode("card")}
+              paddingY="0.625rem"
+              paddingX="1rem"
+            />
+          ) : (
+            <SecondaryButton
+              text="Card View"
+              onClick={() => setViewMode("card")}
+              paddingY="0.625rem"
+              paddingX="1rem"
+            />
+          )}
+
+          {viewMode === "row" ? (
+            <PrimaryButton
+              text="Table View"
+              onClick={() => setViewMode("row")}
+              paddingY="0.625rem"
+              paddingX="2rem"
+            />
+          ) : (
+            <SecondaryButton
+              text="Table View"
+              onClick={() => setViewMode("row")}
+              paddingY="0.625rem"
+              paddingX="2rem"
+            />
+          )}
+        </div>
         {query != undefined &&
           data?.result?.map((character: Character) => {
-            return <CharacterCard character={character} key={character.id} />;
+            return viewMode === "card" ? (
+              <CharacterCard character={character} key={character.id} />
+            ) : (
+              <CharacterRow character={character} key={character.id} />
+            );
           })}
         {data?.result?.length === 0 && (
           <GeneralCard>

@@ -1,11 +1,17 @@
 @use "../../utils/colors.scss" as colors;
 
-.cardContent {
+.container {
+  width: 100%;
+  display: flex;
+}
+
+.rowContent {
   display: flex;
   padding: 1.5rem;
-  justify-content: flex-start;
-  flex-direction: column;
+  justify-content: space-between;
   width: 100%;
+  gap: 1rem;
+  align-items: center;
 }
 
 .cardTitle {
@@ -19,7 +25,6 @@
 }
 
 .cardSimpleTitle {
-  margin-bottom: 1rem;
   text-transform: uppercase;
   font-weight: 500;
   font-size: 1.25rem;
@@ -29,32 +34,23 @@
 .cardCompostTitle {
   display: flex;
   justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
 }
 
 .cardParagraph {
   font-size: 0.875rem;
   line-height: 1.25rem;
-  margin-bottom: 1.5rem;
 }
 
 .cardSimpleParagraph {
   font-size: 0.875rem;
   line-height: 1.25rem;
-  margin-bottom: 0.5rem;
 }
 
 .cardGenres {
-  margin-bottom: 0.5rem;
   display: flex;
   gap: 0.5rem;
-}
-
-.cardImage {
-  object-fit: cover;
-  border-top-left-radius: 0.5rem;
-  border-bottom-left-radius: 0.5rem;
-  width: 12rem;
-  height: auto;
 }
 
 .cardInfo {
@@ -74,5 +70,9 @@
 
   .cardImage {
     width: 100%;
+  }
+
+  .rowContent {
+    flex-direction: column;
   }
 }

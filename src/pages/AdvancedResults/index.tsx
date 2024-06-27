@@ -7,10 +7,15 @@ import { CharacterCard } from "../../components/CharacterCard";
 import { StoryCard } from "../../components/StoryCard";
 import { GeneralCard } from "../../components/GeneralCard";
 import styles from "./styles.module.scss";
+import { SecondaryButton } from "../../components/Atoms/SecondaryButton";
+import { PrimaryButton } from "../../components/Atoms/PrimaryButton";
+import { CharacterRow } from "../../components/CharacterRow";
+import { StoryRow } from "../../components/StoryRow";
 
 export function AdvancedResults() {
   const [content, setContent] = useState<any>();
   const [search, setSearch] = useState<string>("");
+  const [viewMode, setViewMode] = useState<string>("card");
   let location = useLocation();
 
   const getAdvancedResultsMutation = useMutation(
@@ -40,10 +45,51 @@ export function AdvancedResults() {
       search={location.state.search}
     >
       <>
+        <div className={styles.buttons}>
+          {viewMode === "card" ? (
+            <PrimaryButton
+              text="Card View"
+              onClick={() => setViewMode("card")}
+              paddingY="0.625rem"
+              paddingX="1rem"
+            />
+          ) : (
+            <SecondaryButton
+              text="Card View"
+              onClick={() => setViewMode("card")}
+              paddingY="0.625rem"
+              paddingX="1rem"
+            />
+          )}
+
+          {viewMode === "row" ? (
+            <PrimaryButton
+              text="Table View"
+              onClick={() => setViewMode("row")}
+              paddingY="0.625rem"
+              paddingX="2rem"
+            />
+          ) : (
+            <SecondaryButton
+              text="Table View"
+              onClick={() => setViewMode("row")}
+              paddingY="0.625rem"
+              paddingX="2rem"
+            />
+          )}
+        </div>
         {content?.result?.map((content: any) => {
           if (search === "stories")
-            return <StoryCard story={content} key={content.id} />;
-          return <CharacterCard character={content} key={content.id} />;
+            return viewMode === "card" ? (
+              <StoryCard story={content} key={content.id} />
+            ) : (
+              <StoryRow story={content} key={content.id} />
+            );
+          return viewMode === "card" ? (
+            <CharacterCard character={content} key={content.id} />
+          ) : (
+            <CharacterRow character={content} key={content.id} />
+          );
         })}
         {content?.result?.length === 0 && (
           <GeneralCard>
