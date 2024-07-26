@@ -11,12 +11,13 @@ import {
 import { SubmitHandler, useForm } from "react-hook-form";
 import { PrimaryButton } from "../../components/Atoms/PrimaryButton";
 import Select from "react-select";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useMutation } from "react-query";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Genres, ICreateStory } from "../../types";
 import { useGetCharacter } from "../../hooks/characters";
 import { createStory } from "../../api/story";
+import { useGetPermissions } from "../../hooks/admin";
 
 export function SuggestStory() {
   let location = useLocation();
@@ -37,6 +38,16 @@ export function SuggestStory() {
       },
     }
   );
+
+  const { data: permissions } = useGetPermissions();
+
+  useEffect(() => {
+    const newToken = localStorage.getItem("token");
+
+    if (permissions && permissions[1].available === false && !newToken) {
+      navigate("/");
+    }
+  }, [permissions]);
 
   const { data } = useGetCharacter(location.state.characterId!);
 
@@ -78,7 +89,7 @@ export function SuggestStory() {
 
   return (
     <GlobalLayout>
-      <>
+      <div className={styles.boundary}>
         <GeneralCard>
           <div className={styles.content}>
             <h5 className={styles.title}>Suggest a story for {data?.name}</h5>
@@ -225,7 +236,7 @@ export function SuggestStory() {
             </form>
           </div>
         </GeneralCard>
-      </>
+      </div>
     </GlobalLayout>
   );
 }

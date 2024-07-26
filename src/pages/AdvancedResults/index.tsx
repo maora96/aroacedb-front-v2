@@ -78,15 +78,21 @@ export function AdvancedResults() {
             />
           )}
         </div>
+
         {content?.result?.map((content: any) => {
           if (search === "stories")
             return viewMode === "card" ? (
-              <StoryCard story={content} key={content.id} />
+              <div className={styles.content}>
+                <StoryCard story={content} key={content.id} />
+              </div>
             ) : (
               <StoryRow story={content} key={content.id} />
             );
           return viewMode === "card" ? (
-            <CharacterCard character={content} key={content.id} />
+            <div className={styles.content}>
+              {" "}
+              <CharacterCard character={content} key={content.id} />
+            </div>
           ) : (
             <CharacterRow character={content} key={content.id} />
           );

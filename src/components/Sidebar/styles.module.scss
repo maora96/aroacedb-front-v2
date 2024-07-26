@@ -11,6 +11,11 @@
   height: 100%;
 }
 
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
 .buttons {
   width: 100%;
   display: flex;
@@ -24,6 +29,7 @@
   justify-content: space-between;
   font-size: 0.8rem;
   margin-top: 1rem;
+  width: 100%;
 
   span:last-child {
     color: rgb(181, 222, 157);
@@ -38,6 +44,7 @@
   font-size: 0.7rem;
   margin-top: 1rem;
   flex-wrap: wrap;
+  width: 100%;
 
   span {
     text-transform: uppercase;

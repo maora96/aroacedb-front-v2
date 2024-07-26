@@ -1,6 +1,7 @@
 import { api } from ".";
 import {
   ICreateCharacter,
+  IEditCharacter,
   IGetAdvancedSearchedCharacters,
   IGetAllOrCanonCharacters,
   IGetSearchedCharacters,
@@ -12,8 +13,23 @@ export const getRandomCharacter = async () => {
   return data.result;
 };
 
+export const getRecentlyAddedCharacters = async () => {
+  const { data } = await api.get("/characters/recently-added");
+
+  return data.result;
+};
+
 export const getCharacter = async (id: string) => {
   const { data } = await api.get(`/characters/${id}`);
+
+  return data.result;
+};
+
+export const deleteCharacter = async (id: string) => {
+  const newToken = localStorage.getItem("token");
+  const { data } = await api.delete(`/characters/${id}`, {
+    headers: { Authorization: `Bearer ${newToken}` },
+  });
 
   return data.result;
 };
@@ -75,6 +91,75 @@ export const createCharacter = async (body: ICreateCharacter) => {
   const data = api.post(`/characters`, {
     ...body,
   });
+
+  return data;
+};
+
+export const editCharacter = async ({
+  body,
+  id,
+}: {
+  body: IEditCharacter;
+  id: string;
+}) => {
+  const newToken = localStorage.getItem("token");
+  const data = api.patch(
+    `/characters/${id}`,
+    {
+      ...body,
+    },
+    {
+      headers: { Authorization: `Bearer ${newToken}` },
+    }
+  );
+
+  return data;
+};
+
+export const addStoriesToCharacter = async ({
+  body,
+  id,
+}: {
+  body: { storiesIds: string[] };
+  id: string;
+}) => {
+  const newToken = localStorage.getItem("token");
+  const data = api.patch(
+    `/characters/stories/${id}`,
+    {
+      ...body,
+    },
+    {
+      headers: { Authorization: `Bearer ${newToken}` },
+    }
+  );
+
+  return data;
+};
+
+export const approveCharacter = async (id: string) => {
+  const newToken = localStorage.getItem("token");
+  const data = api.patch(`/characters/status/${id}`, {
+    headers: { Authorization: `Bearer ${newToken}` },
+  });
+
+  return data;
+};
+
+export const getAdminCharacters = async ({
+  status,
+  search,
+}: {
+  status: boolean;
+  search: string | undefined;
+}) => {
+  const newToken = localStorage.getItem("token");
+  const { data } = await api.get(
+    `/characters/admin/${status}?${search && `search=${search}`}`,
+    {
+      headers: { Authorization: `Bearer ${newToken}` },
+    }
+  );
 
   return data;
 };

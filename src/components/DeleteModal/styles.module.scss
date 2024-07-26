@@ -1,0 +1,30 @@
+.modal {
+  background-color: white;
+  padding: 2.5rem;
+  width: 40%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.buttons {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+.title {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+@media (max-width: 575.98px) {
+  .modal {
+    width: 100%;
+  }
+}

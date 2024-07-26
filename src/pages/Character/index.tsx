@@ -2,21 +2,25 @@ import { useGetCharacter } from "../../hooks/characters";
 import { GeneralCard } from "../../components/GeneralCard";
 import { GlobalLayout } from "../../components/GlobalLayout";
 import styles from "./styles.module.scss";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Tag } from "../../components/Atoms/Tag";
 import { Story } from "../../types";
 import { ShadowlessGeneralCard } from "../../components/ShadowlessGeneralCard";
 import { matcher } from "../../utils/dictionary";
+import { PrimaryButton } from "../../components/Atoms/PrimaryButton";
+import { useGetPermissions } from "../../hooks/admin";
 
 export function Character() {
   let { id } = useParams();
-  // const navigate = useNavigate();
+
+  const navigate = useNavigate();
 
   const { data } = useGetCharacter(id!);
+  const { data: permissions } = useGetPermissions();
 
   return (
     <GlobalLayout>
-      <>
+      <div className={styles.boundary}>
         <GeneralCard>
           <div className={styles.content}>
             <h5 className={styles.title}>{data?.name}</h5>
@@ -94,18 +98,20 @@ export function Character() {
           <div className={styles.storiesContent}>
             <h5 className={styles.title}>
               Stories{" "}
-              {/* <PrimaryButton
-                text={"Suggest a story!"}
-                paddingY="0.625rem"
-                paddingX="2rem"
-                onClick={() =>
-                  navigate(`/suggest-story`, {
-                    state: {
-                      characterId: data.id,
-                    },
-                  })
-                }
-              /> */}
+              {permissions && permissions[1].available && (
+                <PrimaryButton
+                  text={"Suggest a story!"}
+                  paddingY="0.625rem"
+                  paddingX="2rem"
+                  onClick={() =>
+                    navigate(`/suggest-story`, {
+                      state: {
+                        characterId: data.id,
+                      },
+                    })
+                  }
+                />
+              )}
             </h5>
             {data?.stories?.map((story: Story) => (
               <ShadowlessGeneralCard>
@@ -166,7 +172,7 @@ export function Character() {
             ))}
           </div>
         </GeneralCard>
-      </>
+      </div>
     </GlobalLayout>
   );
 }

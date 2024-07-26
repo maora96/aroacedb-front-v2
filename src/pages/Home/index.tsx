@@ -10,7 +10,7 @@ export function Home() {
 
   return (
     <GlobalLayout>
-      <>
+      <div className={styles.boundary}>
         <GeneralCard>
           <div className={styles.cardContent}>
             <h5 className={styles.cardTitle}>WELCOME TO THE AROACE DATABASE</h5>
@@ -42,7 +42,7 @@ export function Home() {
             paddingX="2rem"
           />
         </div>
-      </>
+      </div>
     </GlobalLayout>
   );
 }

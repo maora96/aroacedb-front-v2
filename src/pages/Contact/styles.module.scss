@@ -14,14 +14,10 @@
 }
 
 .content {
-  padding: 1.5rem;
-  height: 100%;
-  background-color: rgb(246 246 246);
-  overflow-y: auto;
   display: flex;
-  align-items: center;
   flex-direction: column;
-  row-gap: 2rem;
+  gap: 2rem;
+  width: 50%;
 }
 
 .cardContent {
@@ -71,4 +67,10 @@
   gap: 1rem;
   color: #393e46;
   margin: 1rem auto;
+}
+
+@media (max-width: 575.98px) {
+  .content {
+    width: 100%;
+  }
 }

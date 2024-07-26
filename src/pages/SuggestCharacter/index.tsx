@@ -16,11 +16,12 @@ import {
 import { SubmitHandler, useForm } from "react-hook-form";
 import { PrimaryButton } from "../../components/Atoms/PrimaryButton";
 import Select from "react-select";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { createCharacter } from "../../api/characters";
 import { Genres, ICreateCharacter, Relationship } from "../../types";
+import { useGetPermissions } from "../../hooks/admin";
 
 export function SuggestCharacter() {
   const navigate = useNavigate();
@@ -43,6 +44,16 @@ export function SuggestCharacter() {
       },
     }
   );
+
+  const { data: permissions } = useGetPermissions();
+
+  useEffect(() => {
+    const newToken = localStorage.getItem("token");
+
+    if (permissions && permissions[0].available === false && !newToken) {
+      navigate("/");
+    }
+  }, [permissions]);
 
   const onSubmit: SubmitHandler<any> = (data: any) => {
     if (chosenGenres?.length === 0) {
@@ -91,7 +102,7 @@ export function SuggestCharacter() {
     .filter((item) => item.value !== "Choose one...");
   return (
     <GlobalLayout>
-      <>
+      <div className={styles.boundary}>
         <GeneralCard>
           <div className={styles.content}>
             <h5 className={styles.title}>Suggest a character</h5>
@@ -354,7 +365,7 @@ export function SuggestCharacter() {
             </form>
           </div>
         </GeneralCard>
-      </>
+      </div>
     </GlobalLayout>
   );
 }

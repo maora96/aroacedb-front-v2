@@ -8,6 +8,13 @@
   width: 100%;
 }
 
+.boundary {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 50%;
+}
+
 .cardTitle {
   text-align: center;
   width: 100%;
@@ -22,4 +29,10 @@
   font-size: 0.875rem;
   line-height: 1.25rem;
   margin-bottom: 1.5rem;
+}
+
+@media (max-width: 575.98px) {
+  .boundary {
+    width: 100%;
+  }
 }

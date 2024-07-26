@@ -1,0 +1,135 @@
+@use "../../utils/colors.scss" as colors;
+
+.container {
+  width: 100%;
+  display: flex;
+}
+
+.rowContent {
+  display: flex;
+  padding: 1.5rem;
+  justify-content: space-between;
+  width: 100%;
+  gap: 1rem;
+  align-items: center;
+}
+
+.contentEdit {
+  display: flex;
+  padding: 1.5rem;
+  width: 100%;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.cardTitle {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.cardSimpleTitle {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.cardCompostTitle {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+}
+
+.cardParagraph {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.cardSimpleParagraph {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.cardGenres {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.compactGenres {
+  width: 24.25rem;
+}
+
+.cardInfo {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cardDivider {
+  margin: 1rem 0;
+  color: colors.$primary-light;
+}
+
+.form {
+  width: 100%;
+}
+
+.compact {
+  display: flex;
+  align-items: center;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  gap: 0.4rem;
+
+  select {
+    -webkit-appearance: none;
+    appearance: none;
+    padding: 0.5rem 1.875rem 0.5rem 0.75rem;
+
+    border: 1px solid #e8eaed;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 1px 3px -2px #9098a9;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.7rem;
+    color: #7d7d82;
+    width: 60%;
+  }
+
+  p {
+    width: 8rem;
+  }
+}
+
+.checkbox {
+  width: 1rem;
+  margin: 0;
+}
+
+@media (max-width: 575.98px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .cardImage {
+    width: 100%;
+  }
+
+  .rowContent {
+    flex-direction: column;
+  }
+}

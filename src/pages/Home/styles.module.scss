@@ -24,6 +24,13 @@
   row-gap: 2rem;
 }
 
+.boundary {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 50%;
+}
+
 .cardContent {
   display: flex;
   padding: 1.5rem;
@@ -57,7 +64,7 @@
 }
 
 .button {
-  width: 50%;
+  width: 100%;
   display: flex;
   justify-content: flex-end;
 }
@@ -65,5 +72,9 @@
 @media (max-width: 575.98px) {
   .button {
     margin-bottom: 2rem;
+  }
+
+  .boundary {
+    width: 100%;
   }
 }

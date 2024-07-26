@@ -1,0 +1,90 @@
+@use "../../utils/colors.scss" as colors;
+
+.container {
+  width: 100%;
+  height: calc(100vh - 160px);
+  display: flex;
+}
+
+.home {
+  background: rgb(246 246 246);
+  width: 83.333333%;
+  height: 100%;
+  padding: 1rem;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 50%;
+}
+
+.cardContent {
+  display: flex;
+  padding: 1.5rem;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 100%;
+}
+
+.cardTitle {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.cardParagraph {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.homeTitle {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.button {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+input,
+textarea {
+  width: 100%;
+  border: 1px solid #e8eaed;
+  border-radius: 5px;
+  background: white;
+  box-shadow: 0 1px 3px -2px #9098a9;
+  font-family: inherit;
+  font-size: 0.7rem;
+  color: #7d7d82;
+  padding: 0.5rem 1.875rem 0.5rem 0.75rem;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 575.98px) {
+  .button {
+    margin-bottom: 2rem;
+  }
+
+  .content {
+    width: 100%;
+  }
+}

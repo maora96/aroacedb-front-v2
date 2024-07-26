@@ -8,6 +8,13 @@
   width: 100%;
 }
 
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 50%;
+}
+
 .cardTitle {
   text-align: center;
   width: 100%;
@@ -27,4 +34,10 @@
 .buttons {
   display: flex;
   gap: 1rem;
+}
+
+@media (max-width: 575.98px) {
+  .content {
+    width: 100%;
+  }
 }

@@ -1,10 +1,3 @@
-// import { Button, Input } from "antd";
-// import { Space } from "antd";
-// import styles from "./styles.module.scss";
-// // import { useGetSearchedCharacter } from "../../hooks/characters";
-// // import { useState } from "react";
-// // import { IGetSearchedCharacters } from "../../types";
-// import { useNavigate } from "react-router-dom";
 import styles from "./styles.module.scss";
 
 import { useState } from "react";

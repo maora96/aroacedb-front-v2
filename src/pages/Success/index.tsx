@@ -5,7 +5,7 @@ import styles from "./styles.module.scss";
 export function Success() {
   return (
     <GlobalLayout>
-      <>
+      <div className={styles.boundary}>
         <GeneralCard>
           <div className={styles.cardContent}>
             <h5 className={styles.cardTitle}>Submission received!</h5>
@@ -15,7 +15,7 @@ export function Success() {
             </p>
           </div>
         </GeneralCard>
-      </>
+      </div>
     </GlobalLayout>
   );
 }

@@ -2,6 +2,9 @@ import { useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { SecondaryButton } from "../Atoms/SecondaryButton";
 import styles from "./styles.module.scss";
+import { useGetPermissions } from "../../hooks/admin";
+import { PrimaryButton } from "../Atoms/PrimaryButton";
+import { useEffect, useState } from "react";
 
 export function Header({ query }: { query?: string | null }) {
   const {
@@ -11,6 +14,8 @@ export function Header({ query }: { query?: string | null }) {
   } = useForm();
   const navigate = useNavigate();
 
+  const [token, setToken] = useState("");
+
   const onSubmit: SubmitHandler<any> = (data: any) => {
     navigate(`/results?search=${data.search}`);
   };
@@ -19,6 +24,24 @@ export function Header({ query }: { query?: string | null }) {
     navigate(placeToGo, { replace: true });
     window.location.reload();
   };
+
+  const goTo = (path: string) => {
+    navigate(path);
+  };
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    navigate("/");
+  };
+
+  useEffect(() => {
+    const newToken = localStorage.getItem("token");
+    if (newToken) {
+      setToken(newToken);
+    }
+  }, []);
+
+  const { data: permissions } = useGetPermissions();
 
   return (
     <header className={styles.container}>
@@ -51,14 +74,39 @@ export function Header({ query }: { query?: string | null }) {
           </div>
 
           <div className={styles.searchButtons}>
-            {/* <PrimaryButton
-              text="Suggest a character"
-              onClick={() => navigate("/suggest-character")}
-              paddingY="0.625rem"
-              paddingX="2rem"
-            /> */}
+            {permissions && permissions[0].available && (
+              <PrimaryButton
+                text="Suggest a character"
+                onClick={() => navigate("/suggest-character")}
+                paddingY="0.625rem"
+                paddingX="2rem"
+              />
+            )}
 
-            <SecondaryButton text="Admin" paddingY="0.625rem" paddingX="2rem" />
+            {token ? (
+              <>
+                <SecondaryButton
+                  text="Dashboard"
+                  paddingY="0.625rem"
+                  paddingX="2rem"
+                  onClick={() => goTo("/admin")}
+                />
+
+                <SecondaryButton
+                  text="Logout"
+                  paddingY="0.625rem"
+                  paddingX="2rem"
+                  onClick={() => logout()}
+                />
+              </>
+            ) : (
+              <SecondaryButton
+                text="Admin"
+                paddingY="0.625rem"
+                paddingX="2rem"
+                onClick={() => goTo("/login")}
+              />
+            )}
           </div>
         </div>
 

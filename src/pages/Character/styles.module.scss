@@ -13,6 +13,13 @@
     0 10px 20px -2px rgba(0, 0, 0, 0.04);
 }
 
+.boundary {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 50%;
+}
+
 .content {
   display: flex;
   padding: 1.5rem;
@@ -175,4 +182,10 @@
 .cardDivider {
   margin: 1rem 0;
   color: colors.$primary-light;
+}
+
+@media (max-width: 575.98px) {
+  .boundary {
+    width: 100%;
+  }
 }

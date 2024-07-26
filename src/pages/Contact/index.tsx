@@ -6,7 +6,7 @@ import styles from "./styles.module.scss";
 export function Contact() {
   return (
     <GlobalLayout>
-      <>
+      <div className={styles.content}>
         <GeneralCard>
           <div className={styles.cardContent}>
             <h5 className={styles.cardTitle}>Contact</h5>
@@ -28,7 +28,7 @@ export function Contact() {
             </p>
           </div>
         </GeneralCard>
-      </>
+      </div>
     </GlobalLayout>
   );
 }

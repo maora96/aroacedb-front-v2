@@ -7,7 +7,7 @@ import styles from "./styles.module.scss";
 export function Team() {
   return (
     <GlobalLayout>
-      <>
+      <div className={styles.content}>
         <GeneralCard>
           <div className={styles.cardContent}>
             <h5 className={styles.cardTitle}>THE CREATOR</h5>
@@ -99,7 +99,7 @@ export function Team() {
             </a>
           </div>
         </GeneralCard>
-      </>
+      </div>
     </GlobalLayout>
   );
 }

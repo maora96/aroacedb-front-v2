@@ -1,0 +1,146 @@
+@use "../../utils/colors.scss" as colors;
+
+.container {
+  width: 100%;
+  height: calc(100vh - 160px);
+  display: flex;
+}
+
+.cards {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.home {
+  background: rgb(246 246 246);
+  width: 83.333333%;
+  height: 100%;
+  padding: 1rem;
+}
+
+.content {
+  padding: 1.5rem;
+  height: 100%;
+  background-color: rgb(246 246 246);
+  overflow-y: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 2rem;
+}
+
+.cardContent {
+  display: flex;
+  padding: 1.5rem;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.cardsContent {
+  display: flex;
+  gap: 5.625rem;
+  row-gap: 2rem;
+  width: 89%;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cardsContent > div {
+  width: 40%;
+  height: fit-content;
+}
+
+.buttons {
+  width: 77%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.button {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 11rem;
+}
+
+.cardTitle {
+  width: 100%;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.title {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.number {
+  font-weight: 500;
+  font-size: 2.25rem;
+  color: rgb(181, 222, 157);
+}
+
+.cardParagraph {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.homeTitle {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 2rem;
+  line-height: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.right {
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+input,
+textarea {
+  width: 100%;
+  border: 1px solid #e8eaed;
+  border-radius: 5px;
+  background: white;
+  box-shadow: 0 1px 3px -2px #9098a9;
+  font-family: inherit;
+  font-size: 0.7rem;
+  color: #7d7d82;
+  padding: 0.5rem 1.875rem 0.5rem 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.titleContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.permissions {
+  display: flex;
+  gap: 2rem;
+  width: 50%;
+}

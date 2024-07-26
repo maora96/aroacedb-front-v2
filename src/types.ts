@@ -4,6 +4,12 @@ export interface IGetSearchedCharacters {
   page: number;
 }
 
+export interface IGetSearchedStories {
+  search: string | undefined;
+  amount: number;
+  page: number;
+}
+
 export interface IGetAllOrCanonCharacters {
   param: string | undefined;
   amount: number;
@@ -60,6 +66,22 @@ export interface ICreateCharacter {
   typeOfRep: TypeOfRep;
 }
 
+export interface IEditCharacter {
+  author?: string;
+  cover?: string | null;
+  gender?: Gender;
+  genres?: Genres[];
+  importance?: Importance;
+  name?: string;
+  notesAndWarnings?: string | null;
+  pairing?: Pairing | null;
+  relationships?: Relationship[] | null;
+  romanticOrientation?: RomanticOrientation;
+  series?: string | null;
+  sexualOrientation?: SexualOrientation;
+  typeOfRep?: TypeOfRep;
+}
+
 export interface ICreateStory {
   title: string;
   author: string;
@@ -73,6 +95,26 @@ export interface ICreateStory {
   approved: boolean;
   notesAndWarnings: string | null;
   repNotesAndWarnings: string | null;
+}
+
+export interface IEditStory {
+  title?: string;
+  author?: string;
+  series?: string | null;
+  volume?: number | null;
+  genres?: Genres[];
+  cover?: string;
+  description?: string;
+  length?: Length;
+  ageGroup?: AgeGroup;
+  approved?: boolean;
+  notesAndWarnings?: string | null;
+  repNotesAndWarnings?: string | null;
+}
+
+export interface ILogin {
+  email: string;
+  password: string;
 }
 
 export type Story = {

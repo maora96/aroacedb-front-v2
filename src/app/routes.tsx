@@ -11,6 +11,14 @@ import { Character } from "../pages/Character";
 import { SuggestCharacter } from "../pages/SuggestCharacter";
 import { Success } from "../pages/Success";
 import { SuggestStory } from "../pages/SuggestStory";
+import { Login } from "../pages/Login";
+import { Admin } from "../pages/Admin";
+import { AdminCharacters } from "../pages/AllAdminCharacters";
+import { EditCharacter } from "../pages/EditCharacter";
+import { AdminStories } from "../pages/AllAdminStories";
+import { EditStory } from "../pages/EditStory";
+import { AddStoriesToCharacter } from "../pages/AddStoriesToCharacter";
+import { AddNewStoryToCharacter } from "../pages/AddNewStoryToCharacter";
 
 export function MainRoutes() {
   return (
@@ -27,6 +35,20 @@ export function MainRoutes() {
       <Route path="/suggest-character" element={<SuggestCharacter />} />
       <Route path="/suggest-story" element={<SuggestStory />} />
       <Route path="/success" element={<Success />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/admin" element={<Admin />} />
+      <Route path="/admin/characters" element={<AdminCharacters />} />
+      <Route path="/edit/character/:id" element={<EditCharacter />} />
+      <Route path="/admin/stories" element={<AdminStories />} />
+      <Route path="/edit/story/:id" element={<EditStory />} />
+      <Route
+        path="/edit/character/:id/stories"
+        element={<AddStoriesToCharacter />}
+      />
+      <Route
+        path="/edit/character/:id/stories/new"
+        element={<AddNewStoryToCharacter />}
+      />
     </Routes>
   );
 }

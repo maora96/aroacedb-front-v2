@@ -77,7 +77,9 @@ export function Results() {
         {query != undefined &&
           data?.result?.map((character: Character) => {
             return viewMode === "card" ? (
-              <CharacterCard character={character} key={character.id} />
+              <div className={styles.content}>
+                <CharacterCard character={character} key={character.id} />
+              </div>
             ) : (
               <CharacterRow character={character} key={character.id} />
             );

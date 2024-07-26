@@ -1,8 +1,16 @@
 @use "../../utils/colors.scss" as colors;
 
+.container {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 100%;
+}
+
 .cardContent {
   display: flex;
-  padding: 1.5rem;
+  padding-top: 1.5rem;
+  padding-right: 2rem;
   justify-content: flex-start;
   flex-direction: column;
   width: 100%;
@@ -16,6 +24,11 @@
   font-weight: 500;
   font-size: 1.25rem;
   line-height: 1.75rem;
+}
+
+.cardDescription {
+  display: flex;
+  gap: 1.5rem;
 }
 
 .cardSimpleTitle {
@@ -54,7 +67,7 @@
   border-top-left-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
   width: 12rem;
-  height: auto;
+  height: 17.125rem;
 }
 
 .cardInfo {
@@ -67,6 +80,12 @@
   color: colors.$primary-light;
 }
 
+.buttons {
+  display: flex;
+  padding: 1rem;
+  justify-content: flex-end;
+}
+
 @media (max-width: 575.98px) {
   .container {
     flex-direction: column;
@@ -74,5 +93,13 @@
 
   .cardImage {
     width: 100%;
+  }
+
+  .cardDescription {
+    flex-direction: column;
+  }
+
+  .cardContent {
+    padding: 1rem;
   }
 }

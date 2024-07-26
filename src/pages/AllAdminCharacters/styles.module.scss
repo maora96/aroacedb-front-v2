@@ -1,0 +1,59 @@
+@use "../../utils/colors.scss" as colors;
+
+.cardContent {
+  display: flex;
+  padding: 1.5rem;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 100%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 50%;
+}
+
+.cardTitle {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.input {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  outline-color: #d7ecd7;
+  --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  padding-bottom: 0.625rem;
+  padding: 0.5rem;
+  border: 1px solid rgb(181 222 157 / 1);
+  border-radius: 0.5rem;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.cardParagraph {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+@media (max-width: 575.98px) {
+  .content {
+    width: 100%;
+  }
+}
