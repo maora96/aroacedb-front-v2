@@ -30,6 +30,18 @@ export function Admin() {
             <div className={styles.right}>
               <div className={styles.buttons}>
                 <PrimaryButton
+                  text="Add character"
+                  paddingY="0.625rem"
+                  paddingX="2rem"
+                  onClick={() => navigate(`/suggest-character`)}
+                />
+                <PrimaryButton
+                  text="Add story"
+                  paddingY="0.625rem"
+                  paddingX="2rem"
+                  onClick={() => navigate(`/suggest-story`)}
+                />
+                <PrimaryButton
                   text="All characters"
                   paddingY="0.625rem"
                   paddingX="2rem"
