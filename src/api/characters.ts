@@ -139,9 +139,13 @@ export const addStoriesToCharacter = async ({
 
 export const approveCharacter = async (id: string) => {
   const newToken = localStorage.getItem("token");
-  const data = api.patch(`/characters/status/${id}`, {
-    headers: { Authorization: `Bearer ${newToken}` },
-  });
+  const data = api.patch(
+    `/characters/status/${id}`,
+    {},
+    {
+      headers: { Authorization: `Bearer ${newToken}` },
+    }
+  );
 
   return data;
 };
