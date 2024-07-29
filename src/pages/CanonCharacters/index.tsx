@@ -62,15 +62,16 @@ export function CanonCharacters() {
             />
           )}
         </div>
-        <div className={styles.content}>
-          {canonCharacters?.result?.map((character: Character) => {
-            return viewMode === "card" ? (
+
+        {canonCharacters?.result?.map((character: Character) => {
+          return viewMode === "card" ? (
+            <div className={styles.content}>
               <CharacterCard character={character} key={character.id} />
-            ) : (
-              <CharacterRow character={character} key={character.id} />
-            );
-          })}
-        </div>
+            </div>
+          ) : (
+            <CharacterRow character={character} key={character.id} />
+          );
+        })}
       </>
     </GlobalLayout>
   );

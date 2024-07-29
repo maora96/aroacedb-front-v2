@@ -61,15 +61,16 @@ export function AllCharacters() {
             />
           )}
         </div>
-        <div className={styles.content}>
-          {allCharacters?.result?.map((character: Character) => {
-            return viewMode === "card" ? (
+
+        {allCharacters?.result?.map((character: Character) => {
+          return viewMode === "card" ? (
+            <div className={styles.content}>
               <CharacterCard character={character} key={character.id} />
-            ) : (
-              <CharacterRow character={character} key={character.id} />
-            );
-          })}
-        </div>
+            </div>
+          ) : (
+            <CharacterRow character={character} key={character.id} />
+          );
+        })}
       </>
     </GlobalLayout>
   );
