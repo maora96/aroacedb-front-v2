@@ -33,7 +33,7 @@ export function StoryCard({ story }: { story: Story }) {
             <p>{story.description}</p>
           </div>
         </div>
-        <div className={styles.cardContent}>
+        <div className={styles.cardFooter}>
           <hr className={styles.cardDivider} />
 
           <div className={styles.buttons}>
@@ -41,7 +41,7 @@ export function StoryCard({ story }: { story: Story }) {
               text="profile"
               paddingY="0.625rem"
               paddingX="2rem"
-              onClick={() => navigate(`/character/${story.id}`)}
+              onClick={() => navigate(`/story/${story.id}`)}
             />
           </div>
         </div>

@@ -16,6 +16,14 @@
   width: 100%;
 }
 
+.cardContent {
+  display: flex;
+  padding-top: 1.5rem;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 100%;
+}
+
 .cardTitle {
   text-align: center;
   width: 100%;

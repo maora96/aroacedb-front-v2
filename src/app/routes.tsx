@@ -19,6 +19,8 @@ import { AdminStories } from "../pages/AllAdminStories";
 import { EditStory } from "../pages/EditStory";
 import { AddStoriesToCharacter } from "../pages/AddStoriesToCharacter";
 import { AddNewStoryToCharacter } from "../pages/AddNewStoryToCharacter";
+import { AddCharacter } from "../pages/AddCharacter";
+import { StoryPage } from "../pages/Story";
 
 export function MainRoutes() {
   return (
@@ -32,6 +34,7 @@ export function MainRoutes() {
       <Route path="/all-characters/:param" element={<AllCharacters />} />
       <Route path="/advanced-results" element={<AdvancedResults />} />
       <Route path="/character/:id" element={<Character />} />
+      <Route path="/story/:id" element={<StoryPage />} />
       <Route path="/suggest-character" element={<SuggestCharacter />} />
       <Route path="/suggest-story" element={<SuggestStory />} />
       <Route path="/success" element={<Success />} />
@@ -49,6 +52,7 @@ export function MainRoutes() {
         path="/edit/character/:id/stories/new"
         element={<AddNewStoryToCharacter />}
       />
+      <Route path="/add-character" element={<AddCharacter />} />
     </Routes>
   );
 }

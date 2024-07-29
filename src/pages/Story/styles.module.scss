@@ -1,0 +1,205 @@
+@use "../../utils/colors.scss" as colors;
+
+* {
+  font-size: 0.95rem;
+}
+
+.container {
+  background-color: rgb(255 255 255);
+  border-radius: 0.5rem;
+  display: flex;
+  width: 50%;
+  box-shadow: 0 0 #0000, 0 0 #0000, 0 2px 15px -3px rgba(0, 0, 0, 0.07),
+    0 10px 20px -2px rgba(0, 0, 0, 0.04);
+}
+
+.boundary {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 50%;
+}
+
+.cover {
+  display: flex;
+  gap: 1rem;
+}
+
+.storyContent {
+  width: 70%;
+}
+
+.image {
+  width: 12rem;
+  height: 20rem;
+}
+
+.content {
+  display: flex;
+  padding: 1.5rem;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 100%;
+}
+
+.storiesContent {
+  display: flex;
+  padding: 1.5rem;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 100%;
+  gap: 1rem;
+}
+
+.title {
+  width: 100%;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.field {
+  color: #7d7d82;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  font-size: 0.7rem;
+}
+
+.subtitle {
+  margin-top: 0.8rem;
+  color: #7d7d82;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  font-size: 0.7rem;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.unique {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+.item:nth-child(even) {
+  align-items: center;
+}
+
+.item:last-child {
+  align-items: flex-end;
+}
+
+.genres {
+  width: 100%;
+  display: flex;
+  gap: 0.625rem;
+  margin-top: 0.5rem;
+}
+
+.cardParagraph {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.homeTitle {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.button {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cardContent {
+  display: flex;
+  padding: 1.5rem;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 100%;
+}
+
+.cardTitle {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.cardSimpleTitle {
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.cardCompostTitle {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cardParagraph {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.cardSimpleParagraph {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.cardGenres {
+  margin-bottom: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.cardImage {
+  object-fit: cover;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  width: 12rem;
+  height: 20rem;
+}
+
+.cardInfo {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.cardDivider {
+  margin: 1rem 0;
+  color: colors.$primary-light;
+}
+
+@media (max-width: 575.98px) {
+  .boundary {
+    width: 100%;
+  }
+}

@@ -33,13 +33,7 @@ export function Admin() {
                   text="Add character"
                   paddingY="0.625rem"
                   paddingX="2rem"
-                  onClick={() => navigate(`/suggest-character`)}
-                />
-                <PrimaryButton
-                  text="Add story"
-                  paddingY="0.625rem"
-                  paddingX="2rem"
-                  onClick={() => navigate(`/suggest-story`)}
+                  onClick={() => navigate(`/add-character`)}
                 />
                 <PrimaryButton
                   text="All characters"

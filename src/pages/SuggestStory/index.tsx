@@ -18,6 +18,7 @@ import { Genres, ICreateStory } from "../../types";
 import { useGetCharacter } from "../../hooks/characters";
 import { createStory } from "../../api/story";
 import { useGetPermissions } from "../../hooks/admin";
+import { addStoriesToCharacter } from "../../api/characters";
 
 export function SuggestStory() {
   let location = useLocation();
@@ -33,8 +34,22 @@ export function SuggestStory() {
   const createStoryMutation = useMutation(
     async (params: ICreateStory) => createStory(params),
     {
+      onSuccess: (data) => {
+        const payload = {
+          storiesIds: [data.data.result.id],
+        };
+
+        addStoriesToCharacterMutation.mutate(payload);
+      },
+    }
+  );
+
+  const addStoriesToCharacterMutation = useMutation(
+    async (params: { storiesIds: string[] }) =>
+      addStoriesToCharacter({ body: params, id: location.state?.characterId }),
+    {
       onSuccess: () => {
-        navigate("/success");
+        navigate(`/admin/characters`);
       },
     }
   );
@@ -49,7 +64,7 @@ export function SuggestStory() {
     }
   }, [permissions]);
 
-  const { data } = useGetCharacter(location.state.characterId!);
+  const { data } = useGetCharacter(location.state?.characterId ?? "");
 
   const onSubmit: SubmitHandler<any> = (data: any) => {
     if (chosenGenres?.length === 0) {
