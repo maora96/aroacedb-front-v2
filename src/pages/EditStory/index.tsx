@@ -28,7 +28,7 @@ export function EditStory() {
   } = useForm();
 
   let { id } = useParams();
-  const { data } = useGetStory(id!);
+  const { data } = useGetStory(id ?? "");
 
   const editStoryMutation = useMutation(
     async (params: IEditStory) => editStory({ body: params, id: data.id }),

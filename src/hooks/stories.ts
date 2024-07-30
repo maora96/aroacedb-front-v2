@@ -51,7 +51,7 @@ export const useGetSearchedStories = (filters: IGetSearchedStories) => {
 };
 
 export const useGetStory = (id: string) => {
-  return useQuery("getStory", async () => getStory(id), {
+  return useQuery(["getStory", id], async () => getStory(id), {
     staleTime: 5000,
     refetchOnWindowFocus: false,
     keepPreviousData: true,

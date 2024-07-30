@@ -25,7 +25,7 @@ import { useGetCharacter } from "../../hooks/characters";
 
 export function EditCharacter() {
   let { id } = useParams();
-  const { data } = useGetCharacter(id!);
+  const { data } = useGetCharacter(id ?? "");
 
   const navigate = useNavigate();
 

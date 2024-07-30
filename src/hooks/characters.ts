@@ -31,7 +31,7 @@ export const useGetRecentlyAddedCharacters = () => {
 };
 
 export const useGetCharacter = (id: string) => {
-  return useQuery("getCharacter", async () => getCharacter(id), {
+  return useQuery(["getCharacter", id], async () => getCharacter(id), {
     staleTime: 5000,
     refetchOnWindowFocus: false,
     keepPreviousData: true,
