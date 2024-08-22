@@ -62,6 +62,12 @@ export function AdminStories() {
             setSearch(data.target.value);
           }}
         />
+        <div className={styles.table}>
+          <div className={styles.tableTitle}>Story Title</div>
+          <div className={styles.tableTitle}>Author</div>
+          <div className={styles.tableTitle}>Series</div>
+          <div className={styles.tableTitle}>Genres</div>
+        </div>
         {data?.result?.map((story: Story) => (
           <AdminStoryRow story={story} key={story.id} refetch={refetch} />
         ))}

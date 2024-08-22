@@ -79,27 +79,24 @@ export function AdminStoryRow({
     editStoryMutation.mutate(payload);
   };
   return (
-    <GeneralRow>
-      <div className={styles.container}>
-        {editMode ? (
-          <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-            <div className={styles.contentEdit}>
-              <div className={styles.cardCompostTitle}>
-                <h5 className={styles.cardSimpleTitle}>
-                  <input {...register("title")} defaultValue={story?.title} />
-                </h5>
+    <div className={styles.megaContainer}>
+      <GeneralRow>
+        <div className={styles.container}>
+          {editMode ? (
+            <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+              <div className={styles.editItem}>
+                <input {...register("title")} defaultValue={story?.title} />
               </div>
-              <span className={styles.compact}>
-                by{" "}
+              <div className={styles.editItem}>
                 <input {...register("author")} defaultValue={story?.author} />
-                in the{" "}
+              </div>
+              <div className={styles.editItem}>
                 <input
                   {...register("series")}
                   defaultValue={story?.series ?? ""}
-                />{" "}
-                series`
-              </span>
-              <div className={styles.compactGenres}>
+                />
+              </div>
+              <div className={styles.megaEditItem}>
                 <Select
                   closeMenuOnSelect={false}
                   className={styles.multi}
@@ -113,82 +110,78 @@ export function AdminStoryRow({
                   }}
                 />
               </div>
-
-              <div className={styles.buttons}>
-                <SecondaryButton
-                  text="Cancel"
-                  onClick={() => setEditMode(false)}
-                  paddingY="0.625rem"
-                  paddingX="1rem"
-                />
-                <PrimaryButton
-                  text="Save"
-                  paddingY="0.625rem"
-                  paddingX="1rem"
-                  buttonType="submit"
-                />
+              <div className={styles.contentEdit}>
+                <div className={styles.buttons}>
+                  <SecondaryButton
+                    text="Cancel"
+                    onClick={() => setEditMode(false)}
+                    paddingY="0.625rem"
+                    paddingX="1rem"
+                  />
+                  <PrimaryButton
+                    text="Save"
+                    paddingY="0.625rem"
+                    paddingX="1rem"
+                    buttonType="submit"
+                  />
+                </div>
+              </div>
+            </form>
+          ) : (
+            <div className={styles.rowContent}>
+              <div className={styles.content}>
+                <div className={styles.item}>{story?.title}</div>
+                <div className={styles.item}>{story?.author}</div>
+                <div className={styles.item}>{story?.series}</div>
+                <div className={styles.megaItem}>
+                  {story?.genres.map((genre: string) => (
+                    <Tag color="#b5de9d" text={matcher[genre]} key={genre} />
+                  ))}
+                </div>
               </div>
             </div>
-          </form>
-        ) : (
-          <div className={styles.rowContent}>
-            <div className={styles.content}>
-              <div className={styles.cardCompostTitle}>
-                <h5 className={styles.cardSimpleTitle}>{story?.title}</h5>
-              </div>
-              <span className={styles.cardSimpleParagraph}>
-                by {story?.author}
-                {story?.series && ` | in the ${story?.series} series`}
-              </span>
-              <div className={styles.cardGenres}>
-                {story?.genres.map((genre: string) => (
-                  <Tag color="#b5de9d" text={matcher[genre]} key={genre} />
-                ))}
-              </div>
-            </div>
-
-            <div className={styles.buttons}>
-              <PrimaryButton
-                text="full edit"
-                paddingY="0.625rem"
-                paddingX="1rem"
-                onClick={() => navigate(`/edit/story/${story.id}`)}
+          )}
+          {deleteModal && (
+            <GeneralModal>
+              <DeleteModal
+                text={"character"}
+                id={story.id!}
+                name={story.title}
+                setDeleteModal={setDeleteModal}
+                onDelete={deleteCharacterMutation}
               />
-              <SecondaryButton
-                text="Edit"
-                onClick={() => setEditMode(true)}
-                paddingY="0.625rem"
-                paddingX="1rem"
-              />
-              <DangerButton
-                text="Delete"
-                onClick={() => setDeleteModal(true)}
-                paddingY="0.625rem"
-                paddingX="1rem"
-              />
-              {story.approved !== true && (
-                <PrimaryButton
-                  text="Approve"
-                  paddingY="0.625rem"
-                  paddingX="1rem"
-                  onClick={() => approveStoryMutation.mutate()}
-                />
-              )}
-            </div>
-          </div>
-        )}
-        {deleteModal && (
-          <GeneralModal>
-            <DeleteModal
-              text={"character"}
-              id={story.id!}
-              name={story.title}
-              setDeleteModal={setDeleteModal}
-              onDelete={deleteCharacterMutation}
-            />
-          </GeneralModal>
+            </GeneralModal>
+          )}
+        </div>
+      </GeneralRow>
+      <div className={styles.buttons}>
+        <PrimaryButton
+          text="full edit"
+          paddingY="0.625rem"
+          paddingX="1rem"
+          onClick={() => navigate(`/edit/story/${story.id}`)}
+        />
+        <SecondaryButton
+          text="Edit"
+          onClick={() => setEditMode(true)}
+          paddingY="0.625rem"
+          paddingX="1rem"
+        />
+        <DangerButton
+          text="Delete"
+          onClick={() => setDeleteModal(true)}
+          paddingY="0.625rem"
+          paddingX="1rem"
+        />
+        {story.approved !== true && (
+          <PrimaryButton
+            text="Approve"
+            paddingY="0.625rem"
+            paddingX="1rem"
+            onClick={() => approveStoryMutation.mutate()}
+          />
         )}
       </div>
-    </GeneralRow>
+    </div>
   );
 }
