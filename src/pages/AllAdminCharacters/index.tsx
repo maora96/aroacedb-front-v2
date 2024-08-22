@@ -63,7 +63,17 @@ export function AdminCharacters() {
             setSearch(data.target.value);
           }}
         />
-
+        <div className={styles.table}>
+          <div className={styles.tableTitle}>Character Name</div>
+          <div className={styles.tableTitle}>Gender</div>
+          <div className={styles.tableTitle}>Pairing</div>
+          <div className={styles.tableTitle}>Author</div>
+          <div className={styles.tableTitle}>Series</div>
+          <div className={styles.tableTitle}>Genres</div>
+          <div className={styles.tableTitle}>Importance</div>
+          <div className={styles.tableTitle}>Sexual Orientation</div>
+          <div className={styles.tableTitle}>Romantic Orientation</div>
+        </div>
         {data?.result?.map((character: Character) => (
           <AdminCharacterRow
             character={character}

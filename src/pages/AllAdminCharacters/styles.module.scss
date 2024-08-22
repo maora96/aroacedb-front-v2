@@ -52,6 +52,20 @@
   gap: 1rem;
 }
 
+.table {
+  width: 100%;
+  display: flex;
+  padding: 1.5rem;
+}
+
+.tableTitle {
+  width: 15%;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.75rem;
+}
+
 @media (max-width: 575.98px) {
   .content {
     width: 100%;
