@@ -32,13 +32,7 @@ import {
   TypeOfRep,
 } from "../../types";
 
-export function Sidebar({
-  payload,
-  search,
-}: {
-  payload?: any;
-  search?: string | null;
-}) {
+export function Sidebar({ search }: { payload?: any; search?: string | null }) {
   const [selectedSearch, setSelectedSearch] = useState(
     search ? search : "characters"
   );
