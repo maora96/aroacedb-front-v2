@@ -10,7 +10,7 @@ import {
   genres,
   importances,
   lengths,
-  normalize,
+  matcher,
   pairings,
   relationships,
   romanticOrientations,
@@ -18,6 +18,19 @@ import {
   typeOfReps,
 } from "../../utils/dictionary";
 import { useNavigate } from "react-router-dom";
+import Select from "react-select";
+import {
+  AgeGroup,
+  Gender,
+  Genres,
+  Importance,
+  Length,
+  Pairing,
+  Relationship,
+  RomanticOrientation,
+  SexualOrientation,
+  TypeOfRep,
+} from "../../types";
 
 export function Sidebar({
   payload,
@@ -29,8 +42,25 @@ export function Sidebar({
   const [selectedSearch, setSelectedSearch] = useState(
     search ? search : "characters"
   );
+  const [chosenSexualOrientations, setChosenSexualOrientations] = useState<
+    SexualOrientation[]
+  >([]);
+  const [chosenRomanticOrientations, setChosenRomanticOrientations] = useState<
+    RomanticOrientation[]
+  >([]);
+  const [chosenGenders, setChosenGenders] = useState<Gender[]>([]);
+  const [chosenGenres, setChosenGenres] = useState<Genres[]>([]);
+  const [chosenImportance, setChosenImportance] = useState<Importance[]>([]);
+  const [chosenPairing, setChosenPairing] = useState<Pairing[]>([]);
+  const [chosenRelationships, setChosenRelationships] = useState<
+    Relationship[]
+  >([]);
+  const [chosenTypeOfRep, setChosenTypeOfRep] = useState<TypeOfRep[]>([]);
+
+  const [chosenAgeGroup, setChosenAgeGroup] = useState<AgeGroup[]>([]);
+  const [chosenLength, setChosenLength] = useState<Length[]>([]);
+
   const {
-    register,
     reset,
     handleSubmit,
     formState: {},
@@ -39,26 +69,26 @@ export function Sidebar({
 
   const navigate = useNavigate();
 
-  const onSubmit: SubmitHandler<any> = (data: any) => {
+  const onSubmit: SubmitHandler<any> = () => {
     if (selectedSearch === "characters") {
       const payload = {
-        ...(data.gender !== "Choose one..." && { gender: data.gender }),
-        ...(data.genres !== "Choose one..." && { genres: data.genres }),
-        ...(data.importance !== "Choose one..." && {
-          importance: data.importance,
+        ...(chosenGenders?.length !== 0 && { gender: chosenGenders }),
+        ...(chosenGenres?.length !== 0 && { genres: chosenGenres }),
+        ...(chosenImportance?.length !== 0 && {
+          importance: chosenImportance,
         }),
-        ...(data.pairing !== "Choose one..." && { pairing: data.pairing }),
-        ...(data.relationships !== "Choose one..." && {
-          relationships: data.relationships,
+        ...(chosenPairing?.length !== 0 && { pairing: chosenPairing }),
+        ...(chosenRelationships?.length !== 0 && {
+          relationships: chosenRelationships,
         }),
-        ...(data.romanticOrientation !== "Choose one..." && {
-          romanticOrientation: data.romanticOrientation,
+        ...(chosenRomanticOrientations?.length !== 0 && {
+          romanticOrientation: chosenRomanticOrientations,
         }),
-        ...(data.sexualOrientation !== "Choose one..." && {
-          sexualOrientation: data.sexualOrientation,
+        ...(chosenSexualOrientations?.length !== 0 && {
+          sexualOrientation: chosenSexualOrientations,
         }),
-        ...(data.typeOfRep !== "Choose one..." && {
-          typeOfRep: data.typeOfRep,
+        ...(chosenTypeOfRep?.length !== 0 && {
+          typeOfRep: chosenTypeOfRep,
         }),
       };
 
@@ -69,11 +99,11 @@ export function Sidebar({
 
     if (selectedSearch === "stories") {
       const payload = {
-        ...(data.genres !== "Choose one..." && { genres: data.genres }),
-        ...(data.ageGroup !== "Choose one..." && {
-          ageGroup: data.ageGroup,
+        ...(chosenGenres?.length !== 0 && { genres: chosenGenres }),
+        ...(chosenAgeGroup?.length !== 0 && {
+          ageGroup: chosenAgeGroup,
         }),
-        ...(data.length !== "Choose one..." && { length: data.length }),
+        ...(chosenLength?.length !== 0 && { length: chosenLength }),
       };
 
       navigate("/advanced-results", {
@@ -146,169 +176,230 @@ export function Sidebar({
 
         {selectedSearch === "characters" ? (
           <>
-            {" "}
             <div className={styles.option}>
               <span>
                 Sexual
                 <br /> Orientation
               </span>
-              <select
-                {...register("sexualOrientation")}
-                className={styles.select}
-                defaultValue={payload?.sexualOrientation}
-              >
-                {sexualOrientations.map((value: string) => (
-                  <option value={value} key={value}>
-                    {normalize(value)}
-                  </option>
-                ))}
-              </select>
+              <Select
+                closeMenuOnSelect={false}
+                className={styles.multi}
+                isMulti
+                options={sexualOrientations?.map((sexualOrientation) => {
+                  return {
+                    value: sexualOrientation,
+                    label: matcher[sexualOrientation],
+                  };
+                })}
+                onChange={(state) => {
+                  const newSexualOrientations = state.map(
+                    (ship) => ship.value
+                  ) as SexualOrientation[];
+                  setChosenSexualOrientations(newSexualOrientations);
+                }}
+              />
             </div>
             <div className={styles.option}>
               <span>
                 Romantic <br /> Orientation
               </span>
-              <select
-                {...register("romanticOrientation")}
-                className={styles.select}
-                defaultValue={payload?.romanticOrientation}
-              >
-                {romanticOrientations.map((value: string) => (
-                  <option value={value} key={value}>
-                    {normalize(value)}
-                  </option>
-                ))}
-              </select>
+              <Select
+                closeMenuOnSelect={false}
+                className={styles.multi}
+                isMulti
+                options={romanticOrientations?.map((romanticOrientation) => {
+                  return {
+                    value: romanticOrientation,
+                    label: matcher[romanticOrientation],
+                  };
+                })}
+                onChange={(state) => {
+                  const newRomanticOrientations = state.map(
+                    (ship) => ship.value
+                  ) as RomanticOrientation[];
+                  setChosenRomanticOrientations(newRomanticOrientations);
+                }}
+              />
             </div>
             <div className={styles.option}>
               <span>Gender</span>
-              <select
-                {...register("gender")}
-                className={styles.select}
-                defaultValue={payload?.gender}
-              >
-                {genders.map((value: string) => (
-                  <option value={value} key={value}>
-                    {normalize(value)}
-                  </option>
-                ))}
-              </select>
+
+              <Select
+                closeMenuOnSelect={false}
+                className={styles.multi}
+                isMulti
+                options={genders?.map((gender) => {
+                  return {
+                    value: gender,
+                    label: matcher[gender],
+                  };
+                })}
+                onChange={(state) => {
+                  const newGenders = state.map(
+                    (ship) => ship.value
+                  ) as Gender[];
+                  setChosenGenders(newGenders);
+                }}
+              />
             </div>
             <div className={styles.option}>
               <span>Type of Rep</span>
-              <select
-                {...register("typeOfRep")}
-                className={styles.select}
-                defaultValue={payload?.typeOfRep}
-              >
-                {typeOfReps.map((value: string) => (
-                  <option value={value} key={value}>
-                    {normalize(value)}
-                  </option>
-                ))}
-              </select>
+              <Select
+                closeMenuOnSelect={false}
+                className={styles.multi}
+                isMulti
+                options={typeOfReps?.map((typeOfRep) => {
+                  return {
+                    value: typeOfRep,
+                    label: matcher[typeOfRep],
+                  };
+                })}
+                onChange={(state) => {
+                  const newTypeOfReps = state.map(
+                    (ship) => ship.value
+                  ) as TypeOfRep[];
+                  setChosenTypeOfRep(newTypeOfReps);
+                }}
+              />
             </div>
             <div className={styles.option}>
               <span>Genre</span>
-              <select
-                {...register("genres")}
-                className={styles.select}
-                defaultValue={payload?.genres}
-              >
-                {genres.map((value: string) => (
-                  <option value={value} key={value}>
-                    {normalize(value)}
-                  </option>
-                ))}
-              </select>
+              <Select
+                closeMenuOnSelect={false}
+                className={styles.multi}
+                isMulti
+                options={genres?.map((genre) => {
+                  return {
+                    value: genre,
+                    label: matcher[genre],
+                  };
+                })}
+                onChange={(state) => {
+                  const newGenres = state.map((ship) => ship.value) as Genres[];
+                  setChosenGenres(newGenres);
+                }}
+              />
             </div>
             <div className={styles.option}>
               <span>Importance</span>
-              <select
-                {...register("importance")}
-                className={styles.select}
-                defaultValue={payload?.importance}
-              >
-                {importances.map((value: string) => (
-                  <option value={value} key={value}>
-                    {normalize(value)}
-                  </option>
-                ))}
-              </select>
+              <Select
+                closeMenuOnSelect={false}
+                className={styles.multi}
+                isMulti
+                options={importances?.map((importance) => {
+                  return {
+                    value: importance,
+                    label: matcher[importance],
+                  };
+                })}
+                onChange={(state) => {
+                  const newImportances = state.map(
+                    (ship) => ship.value
+                  ) as Importance[];
+                  setChosenImportance(newImportances);
+                }}
+              />
             </div>
             <div className={styles.option}>
               <span>Pairing</span>
-              <select
-                {...register("pairing")}
-                className={styles.select}
-                defaultValue={payload?.pairing}
-              >
-                {pairings.map((value: string) => (
-                  <option value={value} key={value}>
-                    {normalize(value)}
-                  </option>
-                ))}
-              </select>
+              <Select
+                closeMenuOnSelect={false}
+                className={styles.multi}
+                isMulti
+                options={pairings?.map((pairing) => {
+                  return {
+                    value: pairing,
+                    label: pairing,
+                  };
+                })}
+                onChange={(state) => {
+                  const newPairings = state.map(
+                    (ship) => ship.value
+                  ) as Pairing[];
+                  setChosenPairing(newPairings);
+                }}
+              />
             </div>
             <div className={styles.option}>
               <span>Relationship</span>
-              <select
-                {...register("relationships")}
-                className={styles.select}
-                defaultValue={payload?.relationships}
-              >
-                {relationships.map((value: string) => (
-                  <option value={value} key={value}>
-                    {normalize(value)}
-                  </option>
-                ))}
-              </select>
+              <Select
+                closeMenuOnSelect={false}
+                className={styles.multi}
+                isMulti
+                options={relationships?.map((relationship) => {
+                  return {
+                    value: relationship,
+                    label: matcher[relationship],
+                  };
+                })}
+                onChange={(state) => {
+                  const newRelationships = state.map(
+                    (ship) => ship.value
+                  ) as Relationship[];
+                  setChosenRelationships(newRelationships);
+                }}
+              />
             </div>
           </>
         ) : (
           <>
-            {" "}
             <div className={styles.option}>
               <span>Genre</span>
-              <select
-                {...register("genres")}
-                className={styles.select}
-                defaultValue={payload?.genres}
-              >
-                {genres.map((value: string) => (
-                  <option value={value} key={value}>
-                    {normalize(value)}
-                  </option>
-                ))}
-              </select>
+              <Select
+                closeMenuOnSelect={false}
+                className={styles.multi}
+                isMulti
+                options={genres?.map((genre) => {
+                  return {
+                    value: genre,
+                    label: matcher[genre],
+                  };
+                })}
+                onChange={(state) => {
+                  const newGenres = state.map((ship) => ship.value) as Genres[];
+                  setChosenGenres(newGenres);
+                }}
+              />
             </div>
             <div className={styles.option}>
               <span>Age group</span>
-              <select
-                {...register("ageGroup")}
-                className={styles.select}
-                defaultValue={payload?.ageGroup}
-              >
-                {ageGroups.map((value: string) => (
-                  <option value={value} key={value}>
-                    {normalize(value)}
-                  </option>
-                ))}
-              </select>
+              <Select
+                closeMenuOnSelect={false}
+                className={styles.multi}
+                isMulti
+                options={ageGroups?.map((ageGroup) => {
+                  return {
+                    value: ageGroup,
+                    label: matcher[ageGroup],
+                  };
+                })}
+                onChange={(state) => {
+                  const newAgeGroups = state.map(
+                    (ship) => ship.value
+                  ) as AgeGroup[];
+                  setChosenAgeGroup(newAgeGroups);
+                }}
+              />
             </div>
             <div className={styles.option}>
               <span>Length</span>
-              <select
-                {...register("length")}
-                className={styles.select}
-                defaultValue={payload?.length}
-              >
-                {lengths.map((value: string) => (
-                  <option value={value} key={value}>
-                    {normalize(value)}
-                  </option>
-                ))}
-              </select>
+              <Select
+                closeMenuOnSelect={false}
+                className={styles.multi}
+                isMulti
+                options={lengths?.map((length) => {
+                  return {
+                    value: length,
+                    label: matcher[length],
+                  };
+                })}
+                onChange={(state) => {
+                  const newLengths = state.map(
+                    (ship) => ship.value
+                  ) as Length[];
+                  setChosenLength(newLengths);
+                }}
+              />
             </div>
           </>
         )}
