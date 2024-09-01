@@ -14,13 +14,14 @@ import { SuggestStory } from "../pages/SuggestStory";
 import { Login } from "../pages/Login";
 import { Admin } from "../pages/Admin";
 import { AdminCharacters } from "../pages/AllAdminCharacters";
-import { EditCharacter } from "../pages/EditCharacter";
 import { AdminStories } from "../pages/AllAdminStories";
 import { EditStory } from "../pages/EditStory";
 import { AddStoriesToCharacter } from "../pages/AddStoriesToCharacter";
 import { AddNewStoryToCharacter } from "../pages/AddNewStoryToCharacter";
 import { AddCharacter } from "../pages/AddCharacter";
 import { StoryPage } from "../pages/Story";
+import { EditCharacterStories } from "../pages/EditCharacterStories";
+import { EditCharacter } from "../pages/EditCharacter";
 
 export function MainRoutes() {
   return (
@@ -42,11 +43,15 @@ export function MainRoutes() {
       <Route path="/admin" element={<Admin />} />
       <Route path="/admin/characters" element={<AdminCharacters />} />
       <Route path="/edit/character/:id" element={<EditCharacter />} />
-      <Route path="/admin/stories" element={<AdminStories />} />
-      <Route path="/edit/story/:id" element={<EditStory />} />
       <Route
         path="/edit/character/:id/stories"
         element={<AddStoriesToCharacter />}
+      />
+      <Route path="/admin/stories" element={<AdminStories />} />
+      <Route path="/edit/story/:id" element={<EditStory />} />
+      <Route
+        path="/edit/character/:id/stories/add"
+        element={<EditCharacterStories />}
       />
       <Route
         path="/edit/character/:id/stories/new"

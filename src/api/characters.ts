@@ -34,6 +34,15 @@ export const deleteCharacter = async (id: string) => {
   return data.result;
 };
 
+export const removeStoryFromCharacter = async (id: string, storyId: string) => {
+  const newToken = localStorage.getItem("token");
+  const { data } = await api.delete(`/characters/${id}/stories/${storyId}`, {
+    headers: { Authorization: `Bearer ${newToken}` },
+  });
+
+  return data;
+};
+
 export const getSearchedCharacters = async ({
   search,
   amount,

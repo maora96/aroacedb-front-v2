@@ -276,6 +276,14 @@ export function AdminCharacterRow({
           paddingY="0.625rem"
           paddingX="1rem"
         />
+        <SecondaryButton
+          text="Edit stories"
+          onClick={() =>
+            navigate(`/edit/character/${character.id}/stories/add`)
+          }
+          paddingY="0.625rem"
+          paddingX="1rem"
+        />
         <DangerButton
           text="Delete"
           onClick={() => setDeleteModal(true)}
