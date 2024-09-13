@@ -9,6 +9,7 @@ import { ShadowlessGeneralCard } from "../../components/ShadowlessGeneralCard";
 import { matcher } from "../../utils/dictionary";
 import { PrimaryButton } from "../../components/Atoms/PrimaryButton";
 import { useGetPermissions } from "../../hooks/admin";
+import toast from "react-hot-toast";
 
 export function Character() {
   let { id } = useParams();
@@ -17,6 +18,8 @@ export function Character() {
 
   const { data } = useGetCharacter(id!);
   const { data: permissions } = useGetPermissions();
+
+  const notify = () => toast.success("Character saved to your favorites!");
 
   const addToFavorites = () => {
     let favoritesArray = [];
@@ -28,6 +31,7 @@ export function Character() {
       favoritesArray.push(id);
     }
     localStorage.setItem("favorites", JSON.stringify(favoritesArray));
+    notify();
   };
 
   return (
