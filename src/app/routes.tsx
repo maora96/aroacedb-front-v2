@@ -22,6 +22,7 @@ import { AddCharacter } from "../pages/AddCharacter";
 import { StoryPage } from "../pages/Story";
 import { EditCharacterStories } from "../pages/EditCharacterStories";
 import { EditCharacter } from "../pages/EditCharacter";
+import { Favorites } from "../pages/Favorites";
 
 export function MainRoutes() {
   return (
@@ -58,6 +59,7 @@ export function MainRoutes() {
         element={<AddNewStoryToCharacter />}
       />
       <Route path="/add-character" element={<AddCharacter />} />
+      <Route path="/favorites" element={<Favorites />} />
     </Routes>
   );
 }

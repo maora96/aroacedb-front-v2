@@ -18,12 +18,32 @@ export function Character() {
   const { data } = useGetCharacter(id!);
   const { data: permissions } = useGetPermissions();
 
+  const addToFavorites = () => {
+    let favoritesArray = [];
+    const existingFavorites = localStorage.getItem("favorites");
+    if (existingFavorites) {
+      favoritesArray = JSON.parse(existingFavorites);
+      favoritesArray.push(id);
+    } else {
+      favoritesArray.push(id);
+    }
+    localStorage.setItem("favorites", JSON.stringify(favoritesArray));
+  };
+
   return (
     <GlobalLayout>
       <div className={styles.boundary}>
         <GeneralCard>
           <div className={styles.content}>
-            <h5 className={styles.title}>{data?.name}</h5>
+            <h5 className={styles.title}>
+              {data?.name}
+              <PrimaryButton
+                text={"Add to favorites"}
+                paddingY="0.625rem"
+                paddingX="2rem"
+                onClick={addToFavorites}
+              />
+            </h5>
 
             <div className={styles.row}>
               <div className={styles.item}>

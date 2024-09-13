@@ -4,11 +4,16 @@ import {
   getAllCharacters,
   getCanonCharacters,
   getCharacter,
+  getFavoriteCharacters,
   getRandomCharacter,
   getRecentlyAddedCharacters,
   getSearchedCharacters,
 } from "../api/characters";
-import { IGetAllOrCanonCharacters, IGetSearchedCharacters } from "../types";
+import {
+  IGetAllOrCanonCharacters,
+  IGetFavoriteCharacters,
+  IGetSearchedCharacters,
+} from "../types";
 
 export const useGetRandomCharacter = () => {
   return useQuery("getRandomcCharacter", async () => getRandomCharacter(), {
@@ -42,6 +47,19 @@ export const useGetSearchedCharacter = (filters: IGetSearchedCharacters) => {
   return useQuery(
     ["getSearchedCharacter", filters],
     async () => getSearchedCharacters(filters),
+    {
+      staleTime: 5000,
+      refetchOnWindowFocus: false,
+      keepPreviousData: true,
+      enabled: !!filters,
+    }
+  );
+};
+
+export const useGetFavoriteCharacters = (filters: IGetFavoriteCharacters) => {
+  return useQuery(
+    ["getFavoriteCharacters", filters],
+    async () => getFavoriteCharacters(filters),
     {
       staleTime: 5000,
       refetchOnWindowFocus: false,

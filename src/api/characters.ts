@@ -4,6 +4,7 @@ import {
   IEditCharacter,
   IGetAdvancedSearchedCharacters,
   IGetAllOrCanonCharacters,
+  IGetFavoriteCharacters,
   IGetSearchedCharacters,
 } from "../types";
 
@@ -51,6 +52,16 @@ export const getSearchedCharacters = async ({
   const { data } = await api.get(
     `/characters?search=${search}&amount=${amount}&page=${page}`
   );
+
+  return data;
+};
+
+export const getFavoriteCharacters = async (
+  filters: IGetFavoriteCharacters
+) => {
+  const data = api.post(`/characters/favorites`, {
+    ...filters,
+  });
 
   return data;
 };

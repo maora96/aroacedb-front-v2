@@ -66,7 +66,7 @@ export function Header({ query }: { query?: string | null }) {
                 type="text"
                 id="Search"
                 placeholder="Search for characters..."
-                className="w-full rounded-lg border-green border border-solid py-2.5 pe-10 shadow-sm sm:text-sm outline-lightgreen p-2"
+                className={styles.input}
                 {...register("search")}
                 defaultValue={query ? query : ""}
               />
@@ -107,6 +107,13 @@ export function Header({ query }: { query?: string | null }) {
                 onClick={() => goTo("/login")}
               />
             )}
+
+            <SecondaryButton
+              text="Favorites"
+              paddingY="0.625rem"
+              paddingX="2rem"
+              onClick={() => goTo("/favorites")}
+            />
           </div>
         </div>
 

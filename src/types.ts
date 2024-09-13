@@ -4,6 +4,10 @@ export interface IGetSearchedCharacters {
   page: number;
 }
 
+export interface IGetFavoriteCharacters {
+  favorites: string[];
+}
+
 export interface IGetSearchedStories {
   search: string | undefined;
   amount: number;
