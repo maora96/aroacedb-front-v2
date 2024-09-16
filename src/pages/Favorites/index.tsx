@@ -8,6 +8,7 @@ import styles from "./styles.module.scss";
 import { SecondaryButton } from "../../components/Atoms/SecondaryButton";
 import { PrimaryButton } from "../../components/Atoms/PrimaryButton";
 import { CharacterRow } from "../../components/CharacterRow";
+import toast from "react-hot-toast";
 
 export function Favorites() {
   const [favorites, setFavorites] = useState<string[]>([]);
@@ -21,6 +22,23 @@ export function Favorites() {
   }, []);
 
   const { data } = useGetFavoriteCharacters({ favorites: favorites });
+
+  const notifyRemoveFromFavorites = () =>
+    toast.success("Character removed from your favorites!");
+
+  const removeFromFavorites = (id: string) => {
+    let favoritesArray = [];
+    const existingFavorites = localStorage.getItem("favorites");
+    if (existingFavorites) {
+      const parsedFavorites = JSON.parse(existingFavorites);
+      favoritesArray = parsedFavorites?.filter(
+        (favoriteId: string) => favoriteId !== id
+      );
+    }
+    setFavorites(favoritesArray);
+    localStorage.setItem("favorites", JSON.stringify(favoritesArray));
+    notifyRemoveFromFavorites();
+  };
 
   return (
     <GlobalLayout>
@@ -61,10 +79,20 @@ export function Favorites() {
         {data?.data?.favorites?.map((character: Character) => {
           return viewMode === "card" ? (
             <div className={styles.content}>
-              <CharacterCard character={character} key={character.id} />
+              <CharacterCard
+                character={character}
+                key={character.id}
+                isInFavoritePage={true}
+                removeFromFavorites={removeFromFavorites}
+              />
             </div>
           ) : (
-            <CharacterRow character={character} key={character.id} />
+            <CharacterRow
+              character={character}
+              key={character.id}
+              isInFavoritePage={true}
+              removeFromFavorites={removeFromFavorites}
+            />
           );
         })}
         {data?.data?.favorites?.length === 0 && (

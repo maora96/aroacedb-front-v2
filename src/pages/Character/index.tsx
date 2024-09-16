@@ -10,6 +10,8 @@ import { matcher } from "../../utils/dictionary";
 import { PrimaryButton } from "../../components/Atoms/PrimaryButton";
 import { useGetPermissions } from "../../hooks/admin";
 import toast from "react-hot-toast";
+import { useEffect, useState } from "react";
+import { DangerButton } from "../../components/Atoms/DangerButton";
 
 export function Character() {
   let { id } = useParams();
@@ -18,8 +20,12 @@ export function Character() {
 
   const { data } = useGetCharacter(id!);
   const { data: permissions } = useGetPermissions();
+  const [favorites, setFavorites] = useState<string[]>([]);
 
-  const notify = () => toast.success("Character saved to your favorites!");
+  const notifyAddToFavorites = () =>
+    toast.success("Character saved to your favorites!");
+  const notifyRemoveFromFavorites = () =>
+    toast.success("Character removed from your favorites!");
 
   const addToFavorites = () => {
     let favoritesArray = [];
@@ -30,9 +36,31 @@ export function Character() {
     } else {
       favoritesArray.push(id);
     }
+    setFavorites(favoritesArray);
     localStorage.setItem("favorites", JSON.stringify(favoritesArray));
-    notify();
+    notifyAddToFavorites();
   };
+
+  const removeFromFavorites = () => {
+    let favoritesArray = [];
+    const existingFavorites = localStorage.getItem("favorites");
+    if (existingFavorites) {
+      const parsedFavorites = JSON.parse(existingFavorites);
+      favoritesArray = parsedFavorites?.filter(
+        (favoriteId: string) => favoriteId !== id
+      );
+    }
+    setFavorites(favoritesArray);
+    localStorage.setItem("favorites", JSON.stringify(favoritesArray));
+    notifyRemoveFromFavorites();
+  };
+
+  useEffect(() => {
+    const existingFavorites = localStorage.getItem("favorites");
+    if (existingFavorites) {
+      setFavorites(JSON.parse(existingFavorites));
+    }
+  }, []);
 
   return (
     <GlobalLayout>
@@ -41,12 +69,21 @@ export function Character() {
           <div className={styles.content}>
             <h5 className={styles.title}>
               {data?.name}
-              <PrimaryButton
-                text={"Add to favorites"}
-                paddingY="0.625rem"
-                paddingX="2rem"
-                onClick={addToFavorites}
-              />
+              {!favorites?.includes(id!) ? (
+                <PrimaryButton
+                  text={"Add to favorites"}
+                  paddingY="0.625rem"
+                  paddingX="2rem"
+                  onClick={addToFavorites}
+                />
+              ) : (
+                <DangerButton
+                  text={"Remove from favorites"}
+                  paddingY="0.625rem"
+                  paddingX="2rem"
+                  onClick={removeFromFavorites}
+                />
+              )}
             </h5>
 
             <div className={styles.row}>

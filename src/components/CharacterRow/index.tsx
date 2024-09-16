@@ -5,9 +5,21 @@ import styles from "./styles.module.scss";
 import { PrimaryButton } from "../Atoms/PrimaryButton";
 import { useNavigate } from "react-router-dom";
 import { GeneralRow } from "../GeneralRow";
+import { DangerButton } from "../Atoms/DangerButton";
 
-export function CharacterRow({ character }: { character: Character }) {
+export function CharacterRow({
+  character,
+  isInFavoritePage,
+  removeFromFavorites,
+}: {
+  character: Character;
+  isInFavoritePage?: boolean;
+  removeFromFavorites?: (id: string) => void;
+}) {
   const navigate = useNavigate();
+  const removeFavorite = () => {
+    removeFromFavorites && removeFromFavorites(character.id);
+  };
   return (
     <GeneralRow>
       <div className={styles.container}>
@@ -43,6 +55,16 @@ export function CharacterRow({ character }: { character: Character }) {
             paddingX="2rem"
             onClick={() => navigate(`/character/${character.id}`)}
           />
+          {isInFavoritePage && (
+            <DangerButton
+              text={"Remove from favorites"}
+              paddingY="0.625rem"
+              paddingX="2rem"
+              onClick={() => {
+                if (isInFavoritePage) removeFavorite();
+              }}
+            />
+          )}
         </div>
       </div>
     </GeneralRow>
